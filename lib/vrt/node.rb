@@ -1,0 +1,46 @@
+module VRT
+  class Node
+    attr_reader :id, :name, :priority, :type, :version, :parent, :qualified_vrt_id
+    attr_accessor :children
+
+    def initialize(attributes = {})
+      @id = attributes['id'].to_sym
+      @name = attributes['name']
+      @priority = attributes['priority']
+      @type = attributes['type']
+      @has_children = attributes.key?('children')
+      @children = {}
+      @version = attributes['version']
+      @parent = attributes['parent']
+      @qualified_vrt_id = construct_vrt_id
+    end
+
+    def children?
+      @has_children
+    end
+
+    def construct_vrt_id
+      parent ? "#{parent.qualified_vrt_id}.#{id}" : id.to_s
+    end
+
+    # Since this object contains references to parent and children,
+    # as_json must be overridden to avoid unending recursion.
+    def as_json(options = nil)
+      json = {}
+      instance_variables.each do |attribute|
+        attr_name = attribute.to_s.tr('@', '')
+        json[attr_name] = case attr_name
+                          when 'parent'
+                            parent&.qualified_vrt_id
+                          when 'children'
+                            children.inject({}) do |c, (k, v)|
+                              c[k] = v.nil? ? v : v.as_json(options)
+                            end
+                          else
+                            instance_variable_get(attribute)
+                          end
+      end
+      json
+    end
+  end
+end

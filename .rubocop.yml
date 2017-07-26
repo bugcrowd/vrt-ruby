@@ -1,0 +1,31 @@
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - configure
+    - context
+    - define
+    - describe
+    - draw
+    - factory
+    - feature
+    - guard
+    - included
+    - it
+    - let
+    - let!
+    - scenario
+    - setup
+    - shared_context
+    - shared_examples
+    - shared_examples_for
+    - transaction
+
+inherit_from: .rubocop_todo.yml

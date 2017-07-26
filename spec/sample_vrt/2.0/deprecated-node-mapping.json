@@ -1,0 +1,17 @@
+{
+  "poor_physical_security": {
+    "2.0": "other"
+  },
+  "social_engineering": {
+    "2.0": "other"
+  },
+  "unvalidated_redirects_and_forwards.open_redirect.get_based_all_users": {
+    "2.0": "unvalidated_redirects_and_forwards.open_redirect.get_based_thingo"
+  },
+  "unvalidated_redirects_and_forwards.open_redirect.get_based_authenticated": {
+    "2.0": "unvalidated_redirects_and_forwards.open_redirect.get_based"
+  },
+  "unvalidated_redirects_and_forwards.open_redirect.get_based_unauthenticated": {
+    "2.0": "unvalidated_redirects_and_forwards.open_redirect.get_based"
+  }
+}
