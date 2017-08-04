@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['barnett@bugcrowd.com', 'max.schwenk@bugcrowd.com', 'adam.david@bugcrowd.com']
   spec.date          = '2017-07-21'
   spec.summary       = "Ruby wrapper for Bugcrowd\'s Vulnerability Rating Taxonomy"
-  spec.homepage      = 'http://rubygems.org/gems/vrt'
+  spec.homepage      = 'https://github.com/bugcrowd/vrt-ruby'
   spec.license       = 'MIT'
   spec.files         = Dir['lib/**/*.{rb,json}']
   spec.require_paths = ['lib']
