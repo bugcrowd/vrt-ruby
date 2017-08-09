@@ -63,7 +63,7 @@ module VRT
 
     def search(ids, node, level)
       last_level = level.eql?(ids.length)
-      last_level ? node : node&.children&.fetch(ids[level], false)
+      last_level ? node : node&.children&.dig(ids[level])
     end
 
     def build_structure
