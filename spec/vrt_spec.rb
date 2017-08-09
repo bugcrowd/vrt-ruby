@@ -148,6 +148,15 @@ describe VRT do
         end
       end
 
+      context 'has valid parent two levels up' do
+        let(:vrt_id) { 'insecure_data_storage.insecure_data_storage.password' }
+        let(:new_version) { '999.999' }
+
+        it 'should return top level category' do
+          expect(found_node.qualified_vrt_id).to eq 'insecure_data_storage'
+        end
+      end
+
       context 'and has no valid parent node' do
         let(:vrt_id) { 'sensitive_data_exposure.token_leakage_via_referer.over_https' }
         let(:new_version) { '2.0' }
