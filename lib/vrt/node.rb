@@ -20,7 +20,15 @@ module VRT
     end
 
     def construct_vrt_id
-      parent ? "#{parent.qualified_vrt_id}.#{id}" : id.to_s
+      id_list.join('.')
+    end
+
+    def cvss_v3
+      VRT.mappings[:cvss_v3].get(id_list)
+    end
+
+    def id_list
+      parent ? parent.id_list << id : [id]
     end
 
     # Since this object contains references to parent and children,

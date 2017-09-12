@@ -4,6 +4,7 @@
 
 require 'vrt/map'
 require 'vrt/node'
+require 'vrt/mapping'
 require 'vrt/cross_version_mapping'
 
 require 'date'
@@ -16,6 +17,7 @@ module VRT
                    'name' => 'Other',
                    'priority' => nil,
                    'type' => 'category' }.freeze
+  MAPPINGS = { cvss_v3: VRT::Mapping::CVSSv3 }.freeze
 
   @version_json = {}
   @last_update = {}
@@ -105,6 +107,10 @@ module VRT
     JSON.parse(json_pathname(version).read)['content']
   end
 
+  def mappings
+    @mappings ||= Hash[MAPPINGS.map { |name, klass| [name, klass.new] }]
+  end
+
   # Cache the VRT contents in-memory, so we're not hitting File I/O multiple times per
   # request that needs it.
   def reload!
@@ -112,6 +118,7 @@ module VRT
     versions
     get_json
     last_updated
+    mappings
   end
 
   # We separate unload! out, as we need to call it in test environments.
@@ -119,5 +126,6 @@ module VRT
     @versions = nil
     @version_json = {}
     @last_update = {}
+    @mappings = nil
   end
 end
