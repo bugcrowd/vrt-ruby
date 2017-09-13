@@ -24,7 +24,7 @@ module VRT
     end
 
     def cvss_v3
-      VRT.mappings[:cvss_v3].get(id_list)
+      VRT.mappings[:cvss_v3].get(id_list, @version)
     end
 
     def id_list

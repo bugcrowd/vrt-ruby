@@ -2,13 +2,23 @@ module VRT
   class Mapping
     def initialize(scheme)
       @scheme = scheme
-      @mapping = load_mapping
+      load_mappings
     end
 
-    # returns the most specific value provided in the mapping file
-    def get(id_list)
-      mapping = @mapping['content']
-      best_guess = nil
+    # returns the most specific value provided in the mapping file for the given vrt id
+    #
+    # if no mapping file exists for the given version, the mapping file for the earliest version available will be used
+    def get(id_list, version)
+      # update the vrt id to the first version we have a mapping file for
+      unless @mappings.has_key?(version)
+        id_list = VRT.find_node(vrt_id: id_list.join('.'), preferred_version: @min_version).id_list
+        version = @min_version
+      end
+
+      # iterate through the id components, keeping track of where we are in the mapping file
+      # and the most specific mapped value found so far
+      mapping = @mappings[version]['content']
+      best_guess = @mappings[version]['metadata']['default']
       id_list.each do |id|
         entry = mapping[id]
         break unless entry # mapping file doesn't go this deep, return previous value
@@ -21,11 +31,18 @@ module VRT
 
     private
 
-    def load_mapping
-      filename = VRT::DIR.join(VRT.current_version, 'mappings', "#{@scheme}.json")
-      mapping = File.file?(filename) ? JSON.parse(File.read(filename)) : {}
-      mapping['content'] = key_by_id(mapping['content'])
-      mapping
+    def load_mappings
+      @mappings = {}
+      VRT.versions.each do |version|
+        filename = VRT::DIR.join(version, 'mappings', "#{@scheme}.json")
+        next unless File.file?(filename)
+        mapping = JSON.parse(File.read(filename))
+        mapping['content'] = key_by_id(mapping['content'])
+        @mappings[version] = mapping
+        # VRT.versions is sorted in reverse semver order
+        # so this will end up as the earliest version with a mapping file
+        @min_version = version
+      end
     end
 
     # Converts arrays to hashes keyed by the id attribute (as a symbol) for easier lookup. So
