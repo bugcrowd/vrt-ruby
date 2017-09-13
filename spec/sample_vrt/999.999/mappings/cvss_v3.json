@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "default": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+  },
+  "content": [
+    {
+      "id": "server_security_misconfiguration",
+      "cvss_v3": "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "children": [
+        {
+          "id": "unsafe_cross_origin_resource_sharing",
+          "cvss_v3": "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        },
+        {
+          "id": "ssl_attack_breach_poodle_etc",
+          "cvss_v3": "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        },
+        {
+          "id": "using_default_credentials",
+          "cvss_v3": "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+        },
+        {
+          "id": "misconfigured_dns",
+          "cvss_v3": "AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:L"
+        }
+      ]
+    },
+    {
+      "id": "server_side_injection",
+      "children": [
+        {
+          "id": "file_inclusion",
+          "cvss_v3": "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L"
+        },
+        {
+          "id": "remote_code_execution_rce",
+          "cvss_v3": "AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+        },
+        {
+          "id": "sql_injection",
+          "cvss_v3": "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+        }
+      ]
+    },
+    {
+      "id": "unvalidated_redirects_and_forwards",
+      "cvss_v3": "AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "children": [
+        {
+          "id": "open_redirect",
+          "children": [
+            {
+              "id": "get_based",
+              "cvss_v3": "AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "broken_authentication_and_session_management",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "insecure_direct_object_references_idor",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "sensitive_data_exposure",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "cross_site_scripting_xss",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "missing_function_level_access_control",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "cross_site_request_forgery_csrf",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "application_level_denial_of_service_dos",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "external_behavior",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "insufficient_security_configurability",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "using_components_with_known_vulnerabilities",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "insecure_data_storage",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "lack_of_binary_hardening",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "insecure_data_transport",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "insecure_os_firmware",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "broken_cryptography",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "privacy_concerns",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "network_security_misconfiguration",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "mobile_security_misconfiguration",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "client_side_injection",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "id": "vrt_category_only_in_test",
+      "cvss_v3": "AV:P/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:N"
+    }
+  ]
+}

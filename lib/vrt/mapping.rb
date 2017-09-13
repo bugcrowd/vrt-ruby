@@ -10,7 +10,7 @@ module VRT
     # if no mapping file exists for the given version, the mapping file for the earliest version available will be used
     def get(id_list, version)
       # update the vrt id to the first version we have a mapping file for
-      unless @mappings.has_key?(version)
+      unless @mappings.key?(version)
         id_list = VRT.find_node(vrt_id: id_list.join('.'), preferred_version: @min_version).id_list
         version = @min_version
       end

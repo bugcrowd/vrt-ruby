@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "default": "default"
+  },
+  "content": [
+    {
+      "id": "server_security_misconfiguration",
+      "cvss_v3": "a",
+      "children": [
+        {
+          "id": "unsafe_cross_origin_resource_sharing",
+          "cvss_v3": "b"
+        },
+        {
+          "id": "ssl_attack_breach_poodle_etc",
+          "cvss_v3": "c"
+        },
+        {
+          "id": "using_default_credentials",
+          "cvss_v3": "d"
+        },
+        {
+          "id": "misconfigured_dns",
+          "cvss_v3": "e"
+        }
+      ]
+    },
+    {
+      "id": "server_side_injection",
+      "children": [
+        {
+          "id": "file_inclusion",
+          "cvss_v3": "f"
+        },
+        {
+          "id": "remote_code_execution_rce",
+          "cvss_v3": "g"
+        },
+        {
+          "id": "sql_injection",
+          "cvss_v3": "h"
+        }
+      ]
+    },
+    {
+      "id": "unvalidated_redirects_and_forwards",
+      "cvss_v3": "i",
+      "children": [
+        {
+          "id": "open_redirect",
+          "children": [
+            {
+              "id": "get_based",
+              "cvss_v3": "j"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dumb_v2_category",
+      "cvss_v3": "k"
+    },
+    {
+      "id": "insecure_data_storage",
+      "cvss_v3": "l"
+    }
+  ]
+}
