@@ -17,7 +17,7 @@ module VRT
                    'name' => 'Other',
                    'priority' => nil,
                    'type' => 'category' }.freeze
-  MAPPINGS = { cvss_v3: VRT::Mapping::CVSSv3 }.freeze
+  MAPPINGS = %i[cvss_v3].freeze
 
   @version_json = {}
   @last_update = {}
@@ -108,7 +108,7 @@ module VRT
   end
 
   def mappings
-    @mappings ||= Hash[MAPPINGS.map { |name, klass| [name, klass.new] }]
+    @mappings ||= Hash[MAPPINGS.map { |name| [name, VRT::Mapping.new(name)] }]
   end
 
   # Cache the VRT contents in-memory, so we're not hitting File I/O multiple times per

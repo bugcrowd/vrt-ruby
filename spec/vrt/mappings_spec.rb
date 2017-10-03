@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe VRT::Mapping::CVSSv3 do
+describe VRT::Mapping do
   let(:vrt) { VRT }
-  let(:cvss) { described_class.new }
+  let(:cvss) { described_class.new(:cvss_v3) }
 
   describe '#get' do
     subject { cvss.get(id_list, version) }

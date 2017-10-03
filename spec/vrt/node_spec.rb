@@ -39,6 +39,21 @@ describe VRT::Node do
     end
   end
 
+  describe '#mappings' do
+    subject(:mappings) { VRT::Map.new(version).find_node(id).mappings }
+
+    let(:version) { '2.0' }
+    let(:id) { 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing.high_impact' }
+
+    it 'returns a hash with the correct keys' do
+      expect(mappings.keys).to eq(VRT::MAPPINGS)
+    end
+
+    it 'has the right values' do
+      expect(mappings).to include(cvss_v3: 'b')
+    end
+  end
+
   describe '#as_json' do
     subject(:node_hash) { VRT::Map.new(version).find_node(id).as_json }
 

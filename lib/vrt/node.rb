@@ -23,8 +23,8 @@ module VRT
       id_list.join('.')
     end
 
-    def cvss_v3
-      VRT.mappings[:cvss_v3].get(id_list, @version)
+    def mappings
+      Hash[VRT.mappings.map { |name, map| [name, map.get(id_list, @version)] }]
     end
 
     def id_list

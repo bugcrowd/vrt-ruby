@@ -1,7 +1,7 @@
 module VRT
   class Mapping
     def initialize(scheme)
-      @scheme = scheme
+      @scheme = scheme.to_s
       load_mappings
     end
 
@@ -57,12 +57,6 @@ module VRT
         mapping.each_with_object({}) { |(key, value), acc| acc[key] = key_by_id(value) }
       else
         mapping
-      end
-    end
-
-    class CVSSv3 < Mapping
-      def initialize
-        super('cvss_v3')
       end
     end
   end
