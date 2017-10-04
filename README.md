@@ -61,6 +61,8 @@ node.priority
 node.id
 
 node.name
+
+node.mappings
 ```
 
 ### If you need to deal with mappings between versions
