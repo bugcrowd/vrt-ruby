@@ -31,14 +31,14 @@ module VRT
       VRT::Map.new(new_version).find_node(node_id, max_depth: max_depth)
     end
 
-    def find_valid_parent_node(vrt_id, old_version, new_version, max_depth)
-      old_node = VRT::Map.new(old_version).find_node(vrt_id)
+    def find_valid_parent_node(vrt_id, new_version, max_depth)
       new_map = VRT::Map.new(new_version)
       if new_map.valid?(vrt_id)
         new_map.find_node(vrt_id, max_depth: max_depth)
       else
-        return nil if old_node.parent.nil?
-        find_valid_parent_node(old_node.parent.qualified_vrt_id, old_version, new_version, max_depth)
+        parent = vrt_id.split('.')[0..-2].join('.')
+        return nil if parent.empty?
+        find_valid_parent_node(parent, new_version, max_depth)
       end
     end
   end
