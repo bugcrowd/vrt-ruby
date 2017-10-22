@@ -2,6 +2,7 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'date'
 require 'vrt/version'
 
 Gem::Specification.new do |spec|
@@ -10,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.platform      = Gem::Platform::RUBY
   spec.authors       = ['Barnett Klane', 'Max Schwenk', 'Adam David']
   spec.email         = ['barnett@bugcrowd.com', 'max.schwenk@bugcrowd.com', 'adam.david@bugcrowd.com']
-  spec.date          = '2017-07-21'
+  spec.date          = Date.today.to_s
   spec.summary       = "Ruby wrapper for Bugcrowd\'s Vulnerability Rating Taxonomy"
   spec.homepage      = 'https://github.com/bugcrowd/vrt-ruby'
   spec.license       = 'MIT'
