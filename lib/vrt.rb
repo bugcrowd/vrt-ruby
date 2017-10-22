@@ -64,20 +64,20 @@ module VRT
   # the appropriate deprecated mapping. If neither is found it will walk up the tree to find a
   # valid parent node before giving up and returning nil.
   #
-  # @param [String] A valid vrt_id
-  # @param [String] (Optional - recommended) A valid vrt_version that the vrt_id exists in
-  # @param [string] (Optional) The preferred new vrt_version to find a match in
-  # @param [String] (Optional) The maximum depth to match in
+  # @param [String] vrt_id A valid vrt_id
+  # @param [string] preferred_version (Optional) The preferred vrt_version of the returned node
+  #   (defaults to current_version)
+  # @param [String] max_depth (Optional) The maximum depth to match in
+  # @param [String] version (deprecated) This parameter is no longer used
   # @return [VRT::Node|Nil] A valid VRT::Node object or nil if no best match could be found
-  def find_node(vrt_id:, version: nil, preferred_version: nil, max_depth: 'variant')
+  def find_node(vrt_id:, preferred_version: nil, max_depth: 'variant', version: nil) # rubocop:disable Lint/UnusedMethodArgument
     new_version = preferred_version || current_version
     if Map.new(new_version).valid?(vrt_id)
       Map.new(new_version).find_node(vrt_id, max_depth: max_depth)
     elsif deprecated_node?(vrt_id)
       find_deprecated_node(vrt_id, preferred_version, max_depth)
     else
-      return nil unless version
-      find_valid_parent_node(vrt_id, version, new_version, max_depth)
+      find_valid_parent_node(vrt_id, new_version, max_depth)
     end
   end
 

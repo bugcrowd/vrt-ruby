@@ -6,6 +6,7 @@ Style/FrozenStringLiteralComment:
 
 Metrics/LineLength:
   Max: 120
+  IgnoreCopDirectives: true
 
 Metrics/BlockLength:
   ExcludedMethods:

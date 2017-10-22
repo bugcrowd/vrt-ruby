@@ -74,7 +74,6 @@ match for a node under any version and has options to specify a preferred versio
 # Find a node in a given preferred version that best maps to the given id
 VRT.find_node(
   vrt_id: 'social_engineering',
-  version: '1.0',
   preferred_version: '1.1'
 )
 # returns 'other'
@@ -82,7 +81,6 @@ VRT.find_node(
 # Aggregate vulnerabilities by category
 VRT.find_node(
   vrt_id: vrt_id,
-  version: vrt_version,
   max_depth: 'category'
 )
 

@@ -64,6 +64,15 @@
     {
       "id": "insecure_data_storage",
       "cvss_v3": "l"
+    },
+    {
+      "id": "broken_authentication_and_session_management",
+      "children": [
+        {
+          "id": "authentication_bypass",
+          "cvss_v3": "m"
+        }
+      ]
     }
   ]
 }

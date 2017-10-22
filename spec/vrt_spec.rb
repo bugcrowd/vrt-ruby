@@ -58,13 +58,11 @@ describe VRT do
     subject(:found_node) do
       described_class.find_node(
         vrt_id: vrt_id,
-        version: old_version,
         preferred_version: new_version,
         max_depth: max_depth
       )
     end
 
-    let(:old_version) { '1.0' }
     let(:new_version) { nil }
     let(:max_depth) { 'variant' }
 

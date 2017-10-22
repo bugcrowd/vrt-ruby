@@ -67,6 +67,15 @@ describe VRT::Mapping do
           is_expected.to eq('j')
         end
       end
+
+      context 'and id is deprecated with valid parent' do
+        let(:id_list) { %i[broken_authentication_and_session_management authentication_bypass horizontal] }
+        let(:version) { '1.0' }
+
+        it 'finds valid parent' do
+          is_expected.to eq('m')
+        end
+      end
     end
   end
 end
