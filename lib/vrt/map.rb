@@ -18,15 +18,15 @@ module VRT
     end
 
     def find_node(string, max_depth: 'variant')
-      @found_nodes[string + max_depth] ||= walk_node_tree(string, max_depth: max_depth)
+      @_found_nodes[string + max_depth] ||= walk_node_tree(string, max_depth: max_depth)
     end
 
     def valid?(vrt_id)
-      valid_identifier?(vrt_id) && find_node(vrt_id)
+      @_valid_vrt_ids[vrt_id] ||= valid_identifier?(vrt_id) && find_node(vrt_id)
     end
 
     def get_lineage(string, max_depth: 'variant')
-      @lineages[string] ||= construct_lineage(string, max_depth)
+      @_lineages[string] ||= construct_lineage(string, max_depth)
     end
 
     # Returns list of top level categories in the shape:
@@ -40,9 +40,9 @@ module VRT
 
     private
 
-    def valid_identifier?(id)
+    def valid_identifier?(vrt_id)
       # At least one string of lowercase or _, plus up to 2 more with stops
-      id =~ /other|\A[a-z_]+(\.[a-z_]+){0,2}\z/
+      @_valid_identifiers[vrt_id] ||= vrt_id =~ /other|\A[a-z_]+(\.[a-z_]+){0,2}\z/
     end
 
     def construct_lineage(string, max_depth)
