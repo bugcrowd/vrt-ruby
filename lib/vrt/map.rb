@@ -46,8 +46,10 @@ module VRT
     end
 
     def construct_lineage(string, max_depth)
+      return unless valid_identifier?(string)
       lineage = ''
       walk_node_tree(string, max_depth: max_depth) do |ids, node, level|
+        return unless node
         lineage += node.name
         lineage += ' > ' unless level == ids.length
       end
