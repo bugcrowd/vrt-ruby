@@ -11,8 +11,10 @@ module VRT
     def initialize(version = nil)
       @version = version || VRT.current_version
       @structure = build_structure
-      @found_nodes = {}
-      @lineages = {}
+      @_found_nodes = {}
+      @_lineages = {}
+      @_valid_vrt_ids = {}
+      @_valid_identifiers = {}
     end
 
     def find_node(string, max_depth: 'variant')
