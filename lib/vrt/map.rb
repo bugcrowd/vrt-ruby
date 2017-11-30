@@ -21,6 +21,7 @@ module VRT
 
     def valid?(node)
       return true if node == 'other'
+      # At least one string of lowercase or _, plus up to 2 more with stops
       return false unless node =~ /\A[a-z_]+(\.[a-z_]+){0,2}\z/
       found_node = find_node(node)
       return false unless found_node
