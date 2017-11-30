@@ -20,8 +20,11 @@ module VRT
     end
 
     def valid?(node)
-      return false unless node =~ /[[:lower]]/
-      node == 'other' || find_node(node)
+      return true if node == 'other'
+      return false unless node =~ /\A[a-z_]+(\.[a-z_]+){0,2}\z/
+      found_node = find_node(node)
+      return false unless found_node
+      true
     end
 
     def get_lineage(string, max_depth: 'variant')
