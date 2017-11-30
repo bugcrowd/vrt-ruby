@@ -19,13 +19,8 @@ module VRT
       @found_nodes[string + max_depth] ||= walk_node_tree(string, max_depth: max_depth)
     end
 
-    def valid?(node)
-      return true if node == 'other'
-      # At least one string of lowercase or _, plus up to 2 more with stops
-      return false unless node =~ /\A[a-z_]+(\.[a-z_]+){0,2}\z/
-      found_node = find_node(node)
-      return false unless found_node
-      true
+    def valid?(vrt_id)
+      valid_identifier?(vrt_id) && find_node(vrt_id)
     end
 
     def get_lineage(string, max_depth: 'variant')
@@ -43,6 +38,11 @@ module VRT
 
     private
 
+    def valid_identifier?(id)
+      # At least one string of lowercase or _, plus up to 2 more with stops
+      id =~ /other|\A[a-z_]+(\.[a-z_]+){0,2}\z/
+    end
+
     def construct_lineage(string, max_depth)
       lineage = ''
       walk_node_tree(string, max_depth: max_depth) do |ids, node, level|
@@ -54,7 +54,6 @@ module VRT
 
     def walk_node_tree(string, max_depth: 'variant')
       id_tokens = string.split('.').map(&:to_sym)
-      return nil if id_tokens.size > 3
       ids = id_tokens.take(DEPTH_MAP[max_depth])
       node = @structure[ids[0]]
       ids.each_index do |idx|
