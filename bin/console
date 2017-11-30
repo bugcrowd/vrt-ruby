@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'vrt'
+require 'pry'
+
+# An interactive console for the VRT gem
+
+Pry.start
