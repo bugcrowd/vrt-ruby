@@ -26,7 +26,7 @@ module VRT
     end
 
     def get_lineage(string, max_depth: 'variant')
-      @_lineages[string] ||= construct_lineage(string, max_depth)
+      @_lineages[string + max_depth] ||= construct_lineage(string, max_depth)
     end
 
     # Returns list of top level categories in the shape:
