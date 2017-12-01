@@ -22,7 +22,7 @@ module VRT
     end
 
     def valid?(vrt_id)
-      @_valid_vrt_ids[vrt_id] ||= valid_identifier?(vrt_id) && find_node(vrt_id)
+      @_valid_vrt_ids[vrt_id] ||= valid_identifier?(vrt_id) && !find_node(vrt_id).nil?
     end
 
     def get_lineage(string, max_depth: 'variant')
