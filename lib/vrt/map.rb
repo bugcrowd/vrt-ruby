@@ -11,25 +11,22 @@ module VRT
     def initialize(version = nil)
       @version = version || VRT.current_version
       @structure = build_structure
-      @found_nodes = {}
-      @lineages = {}
+      @_found_nodes = {}
+      @_lineages = {}
+      @_valid_vrt_ids = {}
+      @_valid_identifiers = {}
     end
 
     def find_node(string, max_depth: 'variant')
-      @found_nodes[string + max_depth] ||= walk_node_tree(string, max_depth: max_depth)
+      @_found_nodes[string + max_depth] ||= walk_node_tree(string, max_depth: max_depth)
     end
 
-    def valid?(node)
-      return true if node == 'other'
-      # At least one string of lowercase or _, plus up to 2 more with stops
-      return false unless node =~ /\A[a-z_]+(\.[a-z_]+){0,2}\z/
-      found_node = find_node(node)
-      return false unless found_node
-      true
+    def valid?(vrt_id)
+      @_valid_vrt_ids[vrt_id] ||= valid_identifier?(vrt_id) && !find_node(vrt_id).nil?
     end
 
     def get_lineage(string, max_depth: 'variant')
-      @lineages[string] ||= construct_lineage(string, max_depth)
+      @_lineages[string + max_depth] ||= construct_lineage(string, max_depth)
     end
 
     # Returns list of top level categories in the shape:
@@ -43,9 +40,16 @@ module VRT
 
     private
 
+    def valid_identifier?(vrt_id)
+      # At least one string of lowercase or _, plus up to 2 more with stops
+      @_valid_identifiers[vrt_id] ||= vrt_id =~ /other|\A[a-z_]+(\.[a-z_]+){0,2}\z/
+    end
+
     def construct_lineage(string, max_depth)
+      return unless valid_identifier?(string)
       lineage = ''
       walk_node_tree(string, max_depth: max_depth) do |ids, node, level|
+        return unless node
         lineage += node.name
         lineage += ' > ' unless level == ids.length
       end
@@ -54,7 +58,6 @@ module VRT
 
     def walk_node_tree(string, max_depth: 'variant')
       id_tokens = string.split('.').map(&:to_sym)
-      return nil if id_tokens.size > 3
       ids = id_tokens.take(DEPTH_MAP[max_depth])
       node = @structure[ids[0]]
       ids.each_index do |idx|
