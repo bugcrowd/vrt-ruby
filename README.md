@@ -21,6 +21,14 @@ rails generate vrt:install
 ```
 
 ## Usage
+
+For convenience in development, we provide a utility for spinning up a
+playground for playing with the gem. You can invoke it with:
+
+```bash
+bin/console
+```
+
 When one has a VRT Classification ID, one can check it's validity:
 ```ruby
 vrt = VRT::Map.new
