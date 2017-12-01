@@ -105,5 +105,21 @@ describe VRT::Map do
 
       it { is_expected.to be_falsey }
     end
+
+    context 'when ending in a .' do
+      let(:string) { 'server_security_misconfiguration.' }
+
+      it { is_expected.to be_falsey }
+    end
+
+    context 'when a nested node' do
+      let(:string) { 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing' }
+      it { is_expected.to be_truthy }
+    end
+
+    context 'when an invalid nested node' do
+      let(:string) { 'server_security_misconfiguration.meep_meep_meep' }
+      it { is_expected.to be_falsey }
+    end
   end
 end
