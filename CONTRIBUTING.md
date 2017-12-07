@@ -14,8 +14,6 @@ When a new version of the VRT is released, we follow these steps:
     - `git checkout vX.X`
 2. Cut new version of the gem
     - update Vrt::VERSION
-    - `rake build`
-3. Push new version to rubygems
-    - `gem push OUTPUT_OF_RAKE_BUILD`
-4. Update dependent applications
+    - `rake release`
+3. Update dependent applications
     - `bundle update vrt`
