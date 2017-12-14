@@ -57,7 +57,11 @@ module VRT
 
   # Get all deprecated ids that would match in the given categories from the current version
   def all_matching_categories(categories)
-    cross_version_category_mapping.select { |key, _value| categories.include?(key) }.values.flatten
+    cross_version_category_mapping
+      .select { |key, _value| categories.include?(key) }
+      .values
+      .flatten
+      .uniq
   end
 
   # Finds the best match valid node. First looks at valid nodes in the given new version or finds
