@@ -183,6 +183,30 @@ describe VRT do
         expect(full_search_list).to contain_exactly(*deprecated)
       end
     end
+
+    context 'with subcategories included' do
+      let(:categories) do
+        %w[
+          external_behavior
+          other
+          unvalidated_redirects_and_forwards.open_redirect
+        ]
+      end
+      let(:deprecated) do
+        %w[
+          poor_physical_security
+          social_engineering
+          unvalidated_redirects_and_forwards.lack_of_security_speed_bump_page
+          unvalidated_redirects_and_forwards.open_redirect.get_based_all_users
+          unvalidated_redirects_and_forwards.open_redirect.get_based_unauthenticated
+          unvalidated_redirects_and_forwards.open_redirect.get_based_authenticated
+        ]
+      end
+
+      it 'should return a list containing the deprecated categories' do
+        expect(full_search_list).to contain_exactly(*deprecated)
+      end
+    end
   end
 
   describe '#current_version?' do

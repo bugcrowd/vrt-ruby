@@ -1,12 +1,16 @@
 module VRT
   module CrossVersionMapping
     # Maps new_category_id: deprecated_node_id
+    # and new_subcategory_id: deprecated_node_id
     def cross_version_category_mapping
       category_map = {}
       deprecated_node_json.each do |key, value|
         latest_version = value.keys.sort_by { |n| Gem::Version.new(n) }.last
-        id = value[latest_version].split('.')[0]
-        category_map[id] ? category_map[id] << key : category_map[id] = [key]
+        id_list = value[latest_version].split('.')
+        cat_id = id_list[0]
+        sub_id = id_list[0..1].join('.')
+        category_map[cat_id] ? category_map[cat_id] << key : category_map[cat_id] = [key]
+        category_map[sub_id] ? category_map[sub_id] << key : category_map[sub_id] = [key]
       end
       category_map
     end
