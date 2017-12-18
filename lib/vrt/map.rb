@@ -42,7 +42,7 @@ module VRT
 
     def valid_identifier?(vrt_id)
       # At least one string of lowercase or _, plus up to 2 more with stops
-      @_valid_identifiers[vrt_id] ||= vrt_id =~ /other|\A[a-z_]+(\.[a-z_]+){0,2}\z/
+      @_valid_identifiers[vrt_id] ||= vrt_id =~ /other|\A[a-z_\d]+(\.[a-z_\d]+){0,2}\z/
     end
 
     def construct_lineage(string, max_depth)

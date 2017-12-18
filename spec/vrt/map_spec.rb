@@ -121,5 +121,10 @@ describe VRT::Map do
       let(:string) { 'server_security_misconfiguration.meep_meep_meep' }
       it { is_expected.to be_falsey }
     end
+
+    context 'when contains numbers' do
+      let(:string) { 'sensitive_data_exposure.token_leakage_via_referer.untrusted_3rd_party' }
+      it { is_expected.to be_truthy }
+    end
   end
 end
