@@ -17,7 +17,7 @@ module VRT
                    'name' => 'Other',
                    'priority' => nil,
                    'type' => 'category' }.freeze
-  MAPPINGS = %i[cvss_v3].freeze
+  MAPPINGS = %i[cvss_v3 cwe remediation_advice].freeze
 
   @version_json = {}
   @last_update = {}
