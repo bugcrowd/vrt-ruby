@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    vrt (0.4.5)
+    vrt (0.4.6)
 
 GEM
   remote: https://rubygems.org/
