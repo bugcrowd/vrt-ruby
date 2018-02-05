@@ -21,6 +21,7 @@ module VRT
 
   @version_json = {}
   @last_update = {}
+  @maps = {}
 
   module_function
 
@@ -52,7 +53,7 @@ module VRT
   end
 
   def current_categories
-    Map.new(current_version).categories
+    get_map.categories
   end
 
   # Get all deprecated ids that would match in the given categories from the current version
@@ -76,8 +77,8 @@ module VRT
   # @return [VRT::Node|Nil] A valid VRT::Node object or nil if no best match could be found
   def find_node(vrt_id:, preferred_version: nil, max_depth: 'variant', version: nil) # rubocop:disable Lint/UnusedMethodArgument
     new_version = preferred_version || current_version
-    if Map.new(new_version).valid?(vrt_id)
-      Map.new(new_version).find_node(vrt_id, max_depth: max_depth)
+    if get_map(version: new_version).valid?(vrt_id)
+      get_map(version: new_version).find_node(vrt_id, max_depth: max_depth)
     elsif deprecated_node?(vrt_id)
       find_deprecated_node(vrt_id, preferred_version, max_depth)
     else
@@ -91,6 +92,11 @@ module VRT
     version ||= current_version
     @version_json[version] ||= json_for_version(version)
     other ? @version_json[version] + [OTHER_OPTION] : @version_json[version]
+  end
+
+  def get_map(version: nil)
+    version ||= current_version
+    @maps[version] ||= Map.new(version)
   end
 
   # Get names of directories matching lib/data/<major>-<minor>/
@@ -121,6 +127,7 @@ module VRT
     unload!
     versions
     get_json
+    get_map
     last_updated
     mappings
   end
@@ -130,6 +137,7 @@ module VRT
     @versions = nil
     @version_json = {}
     @last_update = {}
+    @maps = {}
     @mappings = nil
   end
 end
