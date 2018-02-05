@@ -32,6 +32,18 @@ describe VRT do
     end
   end
 
+  describe '#get_map' do
+    it 'takes a vrt version number and returns a VRT::Map' do
+      expect(described_class.get_map(version: '1.0')).to be_a(VRT::Map)
+    end
+
+    it 'only creates the map once' do
+      expect(VRT::Map).to receive(:new).once.and_return('dummy map')
+      expect(described_class.get_map(version: '1.0')).to eq('dummy map')
+      expect(described_class.get_map(version: '1.0')).to eq('dummy map')
+    end
+  end
+
   describe '#last_update' do
     it 'shows the last updated time from version metadata' do
       expect(described_class.last_updated).to eq Date.parse('Tue, 17 Feb 3001')
