@@ -75,6 +75,16 @@ describe VRT::Node do
         )
       end
     end
+
+    context 'cwe' do
+      it 'has the exepected (concatenated) CWE IDs' do
+        expect(mappings[:cwe]).to eq [
+          'CWE-942',
+          'CWE-933',
+          'CWE-2000'
+        ]
+      end
+    end
   end
 
   describe '#as_json' do

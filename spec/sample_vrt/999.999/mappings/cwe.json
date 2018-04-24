@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "default": ["CWE-2000"]
+  },
+  "content": [
+    {
+      "id": "server_security_misconfiguration",
+      "cwe": ["CWE-933"],
+      "children": [
+        {
+          "id": "unsafe_cross_origin_resource_sharing",
+          "cwe": ["CWE-942"]
+        },
+        {
+          "id": "path_traversal",
+          "cwe": ["CWE-22", "CWE-73"]
+        },
+        {
+          "id": "directory_listing_enabled",
+          "cwe": ["CWE-548"]
+        },
+        {
+          "id": "ssl_attack_breach_poodle_etc",
+          "cwe": ["CWE-310"]
+        },
+        {
+          "id": "using_default_credentials",
+          "cwe": ["CWE-255", "CWE-521"]
+        },
+        {
+          "id": "misconfigured_dns",
+          "children": [
+            {
+              "id": "zone_transfer",
+              "cwe": ["CWE-669"]
+            }
+          ]
+        },
+        {
+          "id": "dbms_misconfiguration",
+          "children": [
+            {
+              "id": "excessively_privileged_user_dba",
+              "cwe": ["CWE-250"]
+            }
+          ]
+        },
+        {
+          "id": "lack_of_password_confirmation",
+          "children": [
+            {
+              "id": "change_password",
+              "cwe": ["CWE-620"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
