@@ -81,7 +81,7 @@ module VRT
 
     def merge_collections(previous_value, new_value)
       if previous_value.is_a?(Array) && new_value.is_a?(Array)
-        new_value + previous_value
+        new_value | previous_value
       elsif previous_value.is_a?(Hash) && new_value.is_a?(Hash)
         previous_value.merge(new_value)
       else
