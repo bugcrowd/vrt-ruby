@@ -21,7 +21,7 @@ module VRT
         # Convert mappings with multiple keys to live under a single
         # top-level key. Remediation advice has keys 'remediation_advice'
         # and 'references' so we convert it to look like
-        # { remediation_advice: { remediation_advice: 'advice', references: [...] } }
+        # { remediation_advice: { remediation_advice: '...', references: [...] } }
         keys.each_with_object({}) do |key, acc|
           acc[key.to_sym] = get_key(
             id_list: id_list,
@@ -72,18 +72,16 @@ module VRT
       id_list.each do |id|
         entry = mapping[id]
         break unless entry # mapping file doesn't go this deep, return previous value
-        best_guess = merge_collections(best_guess, entry[key]) if entry[key]
+        best_guess = merge_arrays(best_guess, entry[key]) if entry[key]
         # use the children mapping for the next iteration
         mapping = entry['children'] || {}
       end
       best_guess
     end
 
-    def merge_collections(previous_value, new_value)
+    def merge_arrays(previous_value, new_value)
       if previous_value.is_a?(Array) && new_value.is_a?(Array)
         new_value | previous_value
-      elsif previous_value.is_a?(Hash) && new_value.is_a?(Hash)
-        previous_value.merge(new_value)
       else
         new_value
       end
