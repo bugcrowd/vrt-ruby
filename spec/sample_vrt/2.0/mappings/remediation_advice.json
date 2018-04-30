@@ -25,6 +25,33 @@
           "references": [
             "http://projects.webappsec.org/w/page/13246922/Directory%20Indexing"
           ]
+        },
+        {
+          "id": "misconfigured_dns",
+          "children": [
+            {
+              "id": "subdomain_takeover",
+              "remediation_advice": "1. Set up your external service so it fully listens to your wildcard DNS.\n2. Keep your DNS-entries constantly vetted and restricted.",
+              "references": [
+                "https://labs.detectify.com/2014/10/21/hostile-subdomain-takeover-using-herokugithubdesk-more/"
+              ]
+            },
+            {
+              "id": "zone_transfer",
+              "remediation_advice": "Do not allow DNS zone transfers.",
+              "references": [
+                "https://www.sans.org/reading-room/whitepapers/dns/securing-dns-zone-transfer-868",
+                "https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-1999-0532"
+              ]
+            },
+            {
+              "id": "missing_caa_record",
+              "remediation_advice": "As the domain name holder you can modify the DNS zone file to specify one or more Certification Authorities (CAs) authorized to issue certificates for that domain.",
+              "references": [
+                "https://tools.ietf.org/html/rfc6844"
+              ]
+            }
+          ]
         }
       ]
     }

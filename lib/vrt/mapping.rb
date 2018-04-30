@@ -18,7 +18,7 @@ module VRT
       default = @mappings[version]['metadata']['default']
       keys = @mappings[version]['metadata']['keys']
       if keys
-        # Convert mappings with multiple keys to live under a single
+        # Convert mappings with multiple keys to be nested under a single
         # top-level key. Remediation advice has keys 'remediation_advice'
         # and 'references' so we convert it to look like
         # { remediation_advice: { remediation_advice: '...', references: [...] } }
