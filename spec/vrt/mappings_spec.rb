@@ -76,6 +76,57 @@ describe VRT::Mapping do
           is_expected.to eq('m')
         end
       end
+
+      context 'mapping with two keys' do
+        let(:advice) { described_class.new(:remediation_advice) }
+        let(:version) { '999.999' }
+
+        subject { advice.get(id_list, version) }
+
+        context 'when only one of the keys has values' do
+          let(:id_list) { %i[server_security_misconfiguration] }
+
+          it 'returns a hash with both mapping keys present' do
+            is_expected.to match a_hash_including(
+              remediation_advice: nil,
+              references: [
+                'https://www.owasp.org/index.php/Top_10_2013-A5-Security_Misconfiguration',
+                'http://projects.webappsec.org/w/page/13246959/Server%20Misconfiguration'
+              ]
+            )
+          end
+        end
+
+        context 'when both of the keys have values' do
+          let(:id_list) { %i[server_security_misconfiguration unsafe_cross_origin_resource_sharing] }
+
+          it 'returns a hash with both mapping keys and values present' do
+            is_expected.to match a_hash_including(
+              remediation_advice: 'This is advice',
+              references: [
+                'https://www.owasp.org/index.php/HTML5_Security_Cheat_Sheet#Cross_Origin_Resource_Sharing',
+                'https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS',
+                'https://www.owasp.org/index.php/Top_10_2013-A5-Security_Misconfiguration',
+                'http://projects.webappsec.org/w/page/13246959/Server%20Misconfiguration'
+              ]
+            )
+          end
+        end
+
+        context 'with arrays as the mapping values' do
+          let(:id_list) { %i[server_security_misconfiguration misconfigured_dns subdomain_takeover] }
+
+          it 'merges the arrays in order of variant -> subcategory -> category' do
+            is_expected.to match a_hash_including(
+              references: [
+                'https://labs.detectify.com/2014/10/21/hostile-subdomain-takeover-using-herokugithubdesk-more/',
+                'https://www.owasp.org/index.php/Top_10_2013-A5-Security_Misconfiguration',
+                'http://projects.webappsec.org/w/page/13246959/Server%20Misconfiguration'
+              ]
+            )
+          end
+        end
+      end
     end
   end
 end

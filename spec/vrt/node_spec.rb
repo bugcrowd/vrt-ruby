@@ -49,8 +49,41 @@ describe VRT::Node do
       expect(mappings.keys).to eq(VRT::MAPPINGS)
     end
 
-    it 'has the right values' do
-      expect(mappings).to include(cvss_v3: 'b')
+    context 'cvss_v3' do
+      it 'has the right values' do
+        expect(mappings).to include(cvss_v3: 'b')
+      end
+    end
+
+    context 'remediation_advice' do
+      let(:id) { 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing' }
+
+      it 'has the expected remediation advice' do
+        expect(mappings[:remediation_advice]).to match hash_including(
+          remediation_advice: 'This is advice'
+        )
+      end
+
+      it 'has the expected (concatenated) references' do
+        expect(mappings[:remediation_advice]).to match hash_including(
+          references: [
+            'https://www.owasp.org/index.php/HTML5_Security_Cheat_Sheet#Cross_Origin_Resource_Sharing',
+            'https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS',
+            'https://www.owasp.org/index.php/Top_10_2013-A5-Security_Misconfiguration',
+            'http://projects.webappsec.org/w/page/13246959/Server%20Misconfiguration'
+          ]
+        )
+      end
+    end
+
+    context 'cwe' do
+      it 'has the exepected (concatenated) CWE IDs' do
+        expect(mappings[:cwe]).to eq [
+          'CWE-942',
+          'CWE-933',
+          'CWE-2000'
+        ]
+      end
     end
   end
 

@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "default": null,
+    "keys": ["remediation_advice", "references"]
+  },
+  "content": [
+    {
+      "id": "server_security_misconfiguration",
+      "references": [
+        "https://www.owasp.org/index.php/Top_10_2013-A5-Security_Misconfiguration",
+        "http://projects.webappsec.org/w/page/13246959/Server%20Misconfiguration"
+      ],
+      "children": [
+        {
+          "id": "unsafe_cross_origin_resource_sharing",
+          "remediation_advice": "This is advice",
+          "references": [
+            "https://www.owasp.org/index.php/HTML5_Security_Cheat_Sheet#Cross_Origin_Resource_Sharing",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+          ]
+        },
+        {
+          "id": "directory_listing_enabled",
+          "remediation_advice": "Restrict directory listings being displayed from the server configuration.  \n\nExample for Apache:\n\n1. Edit the server configuration file or edit/create directory .htaccess\n2. Add the following line:\nOptions -Indexes\n3. If it is the last line, make sure you have a new line after it.",
+          "references": [
+            "http://projects.webappsec.org/w/page/13246922/Directory%20Indexing"
+          ]
+        },
+        {
+          "id": "misconfigured_dns",
+          "children": [
+            {
+              "id": "subdomain_takeover",
+              "remediation_advice": "1. Set up your external service so it fully listens to your wildcard DNS.\n2. Keep your DNS-entries constantly vetted and restricted.",
+              "references": [
+                "https://labs.detectify.com/2014/10/21/hostile-subdomain-takeover-using-herokugithubdesk-more/"
+              ]
+            },
+            {
+              "id": "zone_transfer",
+              "remediation_advice": "Do not allow DNS zone transfers.",
+              "references": [
+                "https://www.sans.org/reading-room/whitepapers/dns/securing-dns-zone-transfer-868",
+                "https://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-1999-0532"
+              ]
+            },
+            {
+              "id": "missing_caa_record",
+              "remediation_advice": "As the domain name holder you can modify the DNS zone file to specify one or more Certification Authorities (CAs) authorized to issue certificates for that domain.",
+              "references": [
+                "https://tools.ietf.org/html/rfc6844"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
