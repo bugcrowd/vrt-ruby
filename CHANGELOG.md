@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Removed
+
+## [v0.5.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.4.6...v0.5.0) - 2018-05-01
+### Added
 - VRT 1.4 data
 - Support for mappings with `keys` metadata
 - CWE mapping
