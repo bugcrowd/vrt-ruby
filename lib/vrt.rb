@@ -86,6 +86,12 @@ module VRT
     end
   end
 
+  # Convenience method to easily get the most current or preferred version of a vrt_id
+  def correct_vrt_id(vrt_id, version = current_version)
+    find_node(vrt_id: vrt_id, preferred_version: version)
+      .qualified_vrt_id
+  end
+
   # Load the VRT from text files, and parse it as JSON.
   # If other: true, we append the OTHER_OPTION hash at runtime (not cached)
   def get_json(version: nil, other: true)

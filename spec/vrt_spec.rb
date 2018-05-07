@@ -178,6 +178,17 @@ describe VRT do
     end
   end
 
+  describe '#correct_vrt_id' do
+    subject(:correct_vrt) { described_class.correct_vrt_id(vrt_id, version) }
+
+    let(:vrt_id) { 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing.critical_impact' }
+    let(:version) { '999.999' }
+
+    it 'returns the correct qualified_vrt_id' do
+      is_expected.to eq 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing'
+    end
+  end
+
   describe '#all_matching_categories' do
     subject(:full_search_list) { described_class.all_matching_categories(categories) }
 
