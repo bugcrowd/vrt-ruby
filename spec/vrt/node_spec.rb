@@ -80,8 +80,7 @@ describe VRT::Node do
       it 'has the exepected (concatenated) CWE IDs' do
         expect(mappings[:cwe]).to eq [
           'CWE-942',
-          'CWE-933',
-          'CWE-2000'
+          'CWE-933'
         ]
       end
     end

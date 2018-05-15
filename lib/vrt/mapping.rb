@@ -26,12 +26,11 @@ module VRT
           acc[key.to_sym] = get_key(
             id_list: id_list,
             mapping: mapping,
-            key: key,
-            default: default&.try(:[], key)
-          )
+            key: key
+          ) || default&.try(:[], key)
         end
       else
-        get_key(id_list: id_list, mapping: mapping, key: @scheme, default: default)
+        get_key(id_list: id_list, mapping: mapping, key: @scheme) || default
       end
     end
 
@@ -65,10 +64,10 @@ module VRT
       end
     end
 
-    def get_key(id_list:, mapping:, key:, default:)
+    def get_key(id_list:, mapping:, key:)
       # iterate through the id components, keeping track of where we are in the mapping file
       # and the most specific mapped value found so far
-      best_guess = default
+      best_guess = nil
       id_list.each do |id|
         entry = mapping[id]
         break unless entry # mapping file doesn't go this deep, return previous value

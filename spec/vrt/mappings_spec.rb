@@ -127,6 +127,27 @@ describe VRT::Mapping do
           end
         end
       end
+
+      context 'with arrays as the mapping values' do
+        subject { described_class.new(:cwe).get(id_list, version) }
+        let(:version) { '999.999' }
+
+        context 'when mapping has a default' do
+          let(:id_list) { %i[server_security_misconfiguration] }
+
+          it 'does NOT include the default mapping value' do
+            is_expected.to contain_exactly('CWE-933')
+          end
+
+          context 'no mapping exists' do
+            let(:id_list) { %i[other] }
+
+            it 'only includes the default mapping value' do
+              is_expected.to contain_exactly('CWE-2000')
+            end
+          end
+        end
+      end
     end
   end
 end
