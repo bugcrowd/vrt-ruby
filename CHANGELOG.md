@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 
 ### Changed
+- Mappings with array values will no longer coalesce the mapping default.
+  The mapping default will only be used in the case where no value is mapped.
 
 ### Removed
 
@@ -18,7 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Bugcrowd Remediation Advice mapping
 
 ### Changed
-- Mappings with array values now caolesce downwards.
+- Mappings with array values now coalesce downwards.
   Child VRT nodes will include values from parent nodes if a mapping
   provides node data as an array.
 
