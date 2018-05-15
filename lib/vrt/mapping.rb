@@ -68,19 +68,19 @@ module VRT
     def get_key(id_list:, mapping:, key:, default:)
       # iterate through the id components, keeping track of where we are in the mapping file
       # and the most specific mapped value found so far
-      best_guess = default
+      best_guess = nil
       id_list.each do |id|
         entry = mapping[id]
         break unless entry # mapping file doesn't go this deep, return previous value
-        best_guess = merge_arrays(best_guess, entry[key], default) if entry[key]
+        best_guess = merge_arrays(best_guess, entry[key]) if entry[key]
         # use the children mapping for the next iteration
         mapping = entry['children'] || {}
       end
-      best_guess
+      best_guess || default
     end
 
-    def merge_arrays(previous_value, new_value, default = nil)
-      if previous_value.is_a?(Array) && new_value.is_a?(Array) && previous_value != default
+    def merge_arrays(previous_value, new_value)
+      if previous_value.is_a?(Array) && new_value.is_a?(Array)
         new_value | previous_value
       else
         new_value
