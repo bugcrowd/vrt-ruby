@@ -72,15 +72,15 @@ module VRT
       id_list.each do |id|
         entry = mapping[id]
         break unless entry # mapping file doesn't go this deep, return previous value
-        best_guess = merge_arrays(best_guess, entry[key]) if entry[key]
+        best_guess = merge_arrays(best_guess, entry[key], default) if entry[key]
         # use the children mapping for the next iteration
         mapping = entry['children'] || {}
       end
       best_guess
     end
 
-    def merge_arrays(previous_value, new_value)
-      if previous_value.is_a?(Array) && new_value.is_a?(Array)
+    def merge_arrays(previous_value, new_value, default = nil)
+      if previous_value.is_a?(Array) && new_value.is_a?(Array) && previous_value != default
         new_value | previous_value
       else
         new_value
