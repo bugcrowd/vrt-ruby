@@ -7,10 +7,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 
 ### Changed
-- Mappings with array values will no longer coalesce the mapping default.
-  The mapping default will only be used in the case where no value is mapped.
 
 ### Removed
+
+## [v0.5.1](https://github.com/bugcrowd/vrt-ruby/compare/v0.5.0...v0.5.1) - 2018-05-15
+### Changed
+- Mappings with array values will no longer coalesce the mapping default.
+  The mapping default will only be used in the case where no value is mapped.
 
 ## [v0.5.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.4.6...v0.5.0) - 2018-05-01
 ### Added
