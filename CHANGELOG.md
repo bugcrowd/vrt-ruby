@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 
 ### Removed
+- Removed `Gemfile.lock` from source control
 
 ## [v0.5.1](https://github.com/bugcrowd/vrt-ruby/compare/v0.5.0...v0.5.1) - 2018-05-15
 ### Changed
