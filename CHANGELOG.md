@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Removed
 
+## [v0.5.1](https://github.com/bugcrowd/vrt-ruby/compare/v0.5.0...v0.5.1) - 2018-05-15
+### Changed
+- Mappings with array values will no longer coalesce the mapping default.
+  The mapping default will only be used in the case where no value is mapped.
+
 ## [v0.5.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.4.6...v0.5.0) - 2018-05-01
 ### Added
 - VRT 1.4 data
@@ -18,7 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Bugcrowd Remediation Advice mapping
 
 ### Changed
-- Mappings with array values now caolesce downwards.
+- Mappings with array values now coalesce downwards.
   Child VRT nodes will include values from parent nodes if a mapping
   provides node data as an array.
 
