@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "default": {
+      "one_thing": "the thing one is"
+    },
+    "keys": ["one_thing", "another_thing"]
+  },
+  "content": [
+    {
+      "id": "server_security_misconfiguration",
+      "one_thing": "the thing",
+      "another_thing": "another one"
+    }
+  ]
+}
