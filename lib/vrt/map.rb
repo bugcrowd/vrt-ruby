@@ -18,6 +18,7 @@ module VRT
     end
 
     def find_node(string, max_depth: 'variant')
+      return nil unless valid_identifier?(string)
       @_found_nodes[string + max_depth] ||= walk_node_tree(string, max_depth: max_depth)
     end
 
