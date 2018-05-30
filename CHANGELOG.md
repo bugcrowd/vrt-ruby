@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 
 ### Changed
+- Fixed bug for mappings with multiple keys and a default (resolves: [#26](https://github.com/bugcrowd/vrt-ruby/issues/26))
 
 ### Removed
 - Removed `Gemfile.lock` from source control
