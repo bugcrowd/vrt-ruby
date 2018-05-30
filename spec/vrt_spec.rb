@@ -178,6 +178,26 @@ describe VRT do
     end
   end
 
+  describe '#correct_vrt_id' do
+    subject(:correct_vrt) { described_class.correct_vrt_id(vrt_id, version) }
+
+    let(:vrt_id) { 'unvalidated_redirects_and_forwards.open_redirect.get_based_authenticated' }
+    let(:version) { '2.0' }
+
+    it 'returns the correct qualified_vrt_id' do
+      is_expected.to eq 'unvalidated_redirects_and_forwards.open_redirect.get_based'
+    end
+
+    context 'when no version is passed' do
+      let(:vrt_id) { 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing.critical_impact' }
+      let(:version) { nil }
+
+      it 'defaults to the latest version' do
+        is_expected.to eq 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing'
+      end
+    end
+  end
+
   describe '#all_matching_categories' do
     subject(:full_search_list) { described_class.all_matching_categories(categories) }
 
