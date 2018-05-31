@@ -126,6 +126,22 @@ describe VRT::Mapping do
             )
           end
         end
+
+        context 'with a default' do
+          subject { mapping.get(id_list, version) }
+
+          let(:mapping) { described_class.new(:test_mapping) }
+          let(:id_list) { %i[server_security_misconfiguration] }
+          let(:version) { '999.999' }
+
+          it { is_expected.to include(:one_thing, :another_thing) }
+
+          context 'when falling back to default' do
+            let(:id_list) { %i[broken_authentication_and_session_management] }
+
+            it { is_expected.to include(:one_thing) }
+          end
+        end
       end
 
       context 'with arrays as the mapping values' do
