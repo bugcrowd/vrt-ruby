@@ -12,10 +12,17 @@ When a new version of the VRT is released, we follow these steps:
     - `git submodule add git@github.com:bugcrowd/vulnerability-rating-taxonomy.git lib/data/X.X`
     - `cd lib/data/X.X`
     - `git checkout vX.X`
-2. Cut new version of the gem
-    - update Vrt::VERSION
-    - `rake release`
+2. Release a new version of the gem (see below)
 3. Update dependent applications
     - `bundle update vrt`
 
-If you need access to push the gem, create an account on rubygems (if you don't have one already) and then ask one of the existing owners to run gem owner vrt --add <your-rubygems-email>
+### Releasing new versions of the gem
+1. Merge all PRs targeted for inclusion in the release (without touching `version.rb`)
+2. Bump the version in `version.rb`
+3. Commit the version bump `git commit -m [tag name]` (where `tag name` is something like `v0.8.0`)
+4. Tag the commit `git tag [tag name]` (where `tag name` is something like `v0.8.0`)
+5. Push the tag and the commit `git push origin master --tag` 
+6. Run `rake release`
+
+
+If you need access to push the gem, create an account on rubygems (if you don't have one already) and then ask one of the existing owners to run `gem owner vrt --add <your-rubygems-email>`
