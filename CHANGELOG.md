@@ -10,9 +10,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Removed
 
-## [v0.6.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.5.1...v0.6.0) - 2018-09-27
+## [v0.7.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.6.0...v0.7.0) - 2018-11-05
 ### Added
+- Support for VRT v1.6
 
+## [v0.6.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.5.1...v0.6.0) - 2018-09-27
 ### Changed
 - Fixed bug for mappings with multiple keys and a default (resolves: [#26](https://github.com/bugcrowd/vrt-ruby/issues/26))
 
