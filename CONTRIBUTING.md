@@ -17,3 +17,5 @@ When a new version of the VRT is released, we follow these steps:
     - `rake release`
 3. Update dependent applications
     - `bundle update vrt`
+
+If you need access to push the gem, create an account on rubygems (if you don't have one already) and then ask one of the existing owners to run gem owner vrt --add <your-rubygems-email>
