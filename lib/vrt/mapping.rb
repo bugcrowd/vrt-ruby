@@ -27,7 +27,7 @@ module VRT
             id_list: id_list,
             mapping: mapping,
             key: key
-          ) || default&.try(:[], key)
+          ) || default&.dig(key)
         end
       else
         get_key(id_list: id_list, mapping: mapping, key: @scheme) || default
