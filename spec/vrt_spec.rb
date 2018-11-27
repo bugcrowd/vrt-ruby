@@ -175,6 +175,15 @@ describe VRT do
           expect(found_node).to be_nil
         end
       end
+
+      context 'when found node is also deprecated' do
+        let(:vrt_id) { 'unvalidated_redirects_and_forwards.open_redirect.get_based_all_users' }
+        let(:new_version) { '999.999' }
+
+        it 'should retrieve the deeply nested deprecated mapping' do
+          expect(found_node.qualified_vrt_id).to eq 'unvalidated_redirects_and_forwards.open_redirect.get_based'
+        end
+      end
     end
   end
 
@@ -212,6 +221,7 @@ describe VRT do
           unvalidated_redirects_and_forwards.open_redirect.get_based_all_users
           unvalidated_redirects_and_forwards.open_redirect.get_based_unauthenticated
           unvalidated_redirects_and_forwards.open_redirect.get_based_authenticated
+          unvalidated_redirects_and_forwards.open_redirect.get_based_thingo
         ]
       end
 
