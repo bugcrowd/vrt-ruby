@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <img src="https://badge.fury.io/rb/vrt.svg" />
-  <img src="https://badge.buildkite.com/96e360e0465da5f781829145aad202ebbdf3f8e7d296501c87.svg?branch=master" />
+  <img src="https://badge.buildkite.com/d9023f789854d9a40404670f02871ffe89f8ac214524e1cbdf.svg?branch=master" />
 </p>
 
 # VRT Ruby Wrapper
