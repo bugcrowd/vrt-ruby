@@ -41,7 +41,7 @@ module VRT
     private
 
     def valid_identifier?(vrt_id)
-      # At least one string of lowercase alphanumeric or _, plus up to 2 more with stops
+      # At least one string of lowercase letters, numbers, or _, plus up to 2 more with stops
       @_valid_identifiers[vrt_id] ||= vrt_id =~ /other|\A[a-z_\d]+(\.[a-z_\d]+){0,2}\z/
     end
 
