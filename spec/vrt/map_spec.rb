@@ -100,8 +100,14 @@ describe VRT::Map do
       it { is_expected.to be_truthy }
     end
 
-    context 'with invalid string' do
-      let(:string) { '12112asdas2312dcdwsdf-^?' }
+    context 'with numeric in front' do
+      let(:string) { '2fa_example' }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context 'with invalid characters' do
+      let(:string) { 'a12112asdas2312dcdwsdf-^?' }
 
       it { is_expected.to be_falsey }
     end
