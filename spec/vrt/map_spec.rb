@@ -103,6 +103,12 @@ describe VRT::Map do
     context 'with numeric in front' do
       let(:string) { '2fa_example' }
 
+      it { is_expected.to be_falsey }
+    end
+
+    context 'super short' do
+      let(:string) { 'f' }
+
       it { is_expected.to be_truthy }
     end
 
