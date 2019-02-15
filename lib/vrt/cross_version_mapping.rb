@@ -5,7 +5,7 @@ module VRT
     def cross_version_category_mapping
       category_map = {}
       deprecated_node_json.each do |key, value|
-        latest_version = value.keys.sort_by { |n| Gem::Version.new(n) }.last
+        latest_version = value.keys.max_by { |n| Gem::Version.new(n) }
         id_list = value[latest_version].split('.')
         cat_id = id_list[0]
         sub_id = id_list[0..1].join('.')
@@ -26,7 +26,7 @@ module VRT
     end
 
     def latest_version_for_deprecated_node(vrt_id)
-      deprecated_node_json[vrt_id].keys.sort_by { |n| Gem::Version.new(n) }.last
+      deprecated_node_json[vrt_id].keys.max_by { |n| Gem::Version.new(n) }
     end
 
     def find_deprecated_node(vrt_id, new_version = nil, max_depth = 'variant')
@@ -43,6 +43,7 @@ module VRT
       else
         parent = vrt_id.split('.')[0..-2].join('.')
         return nil if parent.empty?
+
         find_valid_parent_node(parent, new_version, max_depth)
       end
     end

@@ -41,6 +41,7 @@ module VRT
       VRT.versions.each do |version|
         filename = VRT::DIR.join(version, 'mappings', "#{@scheme}.json")
         next unless File.file?(filename)
+
         mapping = JSON.parse(File.read(filename))
         mapping['content'] = key_by_id(mapping['content'])
         @mappings[version] = mapping
@@ -71,6 +72,7 @@ module VRT
       id_list.each do |id|
         entry = mapping[id]
         break unless entry # mapping file doesn't go this deep, return previous value
+
         best_guess = merge_arrays(best_guess, entry[key]) if entry[key]
         # use the children mapping for the next iteration
         mapping = entry['children'] || {}
