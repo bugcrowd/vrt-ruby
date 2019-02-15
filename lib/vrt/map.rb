@@ -47,9 +47,11 @@ module VRT
 
     def construct_lineage(string, max_depth)
       return unless valid_identifier?(string)
+
       lineage = ''
       walk_node_tree(string, max_depth: max_depth) do |ids, node, level|
         return unless node
+
         lineage += node.name
         lineage += ' > ' unless level == ids.length
       end
@@ -79,9 +81,7 @@ module VRT
 
     def build_node(memo, vrt, parent = nil)
       node = Node.new(vrt.merge('version' => @version, 'parent' => parent))
-      if node.children?
-        node.children = vrt['children'].reduce({}) { |m, v| build_node(m, v, node) }
-      end
+      node.children = vrt['children'].reduce({}) { |m, v| build_node(m, v, node) } if node.children?
       memo[node.id] = node
       memo
     end

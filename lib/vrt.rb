@@ -48,6 +48,7 @@ module VRT
   def last_updated(version = nil)
     version ||= current_version
     return @last_update[version] if @last_update[version]
+
     metadata = JSON.parse(json_pathname(version).read)['metadata']
     @last_update[version] = Date.parse(metadata['release_date'])
   end
