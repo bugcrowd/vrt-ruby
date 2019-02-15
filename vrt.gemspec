@@ -20,5 +20,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
+  # TODO: investigate why rubocop's jaro-winkler dependency fails to install in our alpine linux image
   spec.add_development_dependency 'rubocop', '0.56.0'
 end
