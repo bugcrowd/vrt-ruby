@@ -39,7 +39,7 @@ module VRT
     def load_mappings
       @mappings = {}
       VRT.versions.each do |version|
-        filename = VRT::DIR.join(version, 'mappings', "#{@scheme}.json")
+        filename = mapping_file_path(version)
         next unless File.file?(filename)
 
         mapping = JSON.parse(File.read(filename))
@@ -49,6 +49,14 @@ module VRT
         # so this will end up as the earliest version with a mapping file
         @min_version = version
       end
+    end
+
+    def mapping_file_path(version)
+      filename = VRT::DIR.join(version, 'mappings', "#{@scheme}.json")
+      return filename if File.file?(filename)
+
+      # Supports mappings that are nested under their scheme name e.g. `mappings/cvss/cvss.json`
+      VRT::DIR.join(version, 'mappings', @scheme, "#{@scheme}.json")
     end
 
     # Converts arrays to hashes keyed by the id attribute (as a symbol) for easier lookup. So
