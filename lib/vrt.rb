@@ -6,6 +6,7 @@ require 'vrt/map'
 require 'vrt/node'
 require 'vrt/mapping'
 require 'vrt/cross_version_mapping'
+require 'vrt/errors'
 
 require 'date'
 require 'json'

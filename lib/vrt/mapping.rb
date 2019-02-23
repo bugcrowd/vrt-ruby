@@ -49,6 +49,7 @@ module VRT
         # so this will end up as the earliest version with a mapping file
         @min_version = version
       end
+      raise VRT::Errors::MappingNotFound if @mappings.empty?
     end
 
     def mapping_file_path(version)
