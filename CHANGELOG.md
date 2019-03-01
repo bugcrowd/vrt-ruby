@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 ### Added
+- Support for nested mappings: https://github.com/bugcrowd/vrt-ruby/pull/43
 
 ### Changed
 - Upgrade ruby version to 2.5.3
