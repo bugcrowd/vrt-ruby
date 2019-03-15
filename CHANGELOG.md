@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Removed
+
+## [v0.8.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.7.0...v0.8.0) - 2019-03-15
+### Added
 - Support for nested mappings: https://github.com/bugcrowd/vrt-ruby/pull/43
 - Support for VRT v1.7
 
