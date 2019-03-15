@@ -18,8 +18,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 - Upgrade ruby version to 2.5.3
 
-### Removed
-
 ## [v0.7.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.6.0...v0.7.0) - 2018-11-05
 ### Added
 - Support for VRT v1.6
