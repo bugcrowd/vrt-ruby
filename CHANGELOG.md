@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Removed
 
+## [v0.8.1](https://github.com/bugcrowd/vrt-ruby/compare/v0.8.0...v0.8.1) - 2019-04-25
+### Added
+- Support for VRT 1.7.1 (includes automotive mappings)
+
 ## [v0.8.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.7.0...v0.8.0) - 2019-03-15
 ### Added
 - Support for nested mappings: https://github.com/bugcrowd/vrt-ruby/pull/43
