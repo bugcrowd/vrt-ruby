@@ -1,0 +1,25 @@
+name: Build and test
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6.x'
+    - name: Build with dependencies
+      run: |
+        gem install bundler
+        bundle install
+    - name: Test with rspec
+      run: |
+        bundle exec rspec spec/
+    - name: Lint with rubocop
+      run: |
+        bundle exec rubocop
