@@ -15,11 +15,12 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.files         = Dir['lib/**/*.{rb,json}']
   spec.require_paths = ['lib']
+  spec.required_ruby_version = '>= 2.5'
 
   spec.add_development_dependency 'bundler', '~> 1.14'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'pry', '~> 0.11'
+  spec.add_development_dependency 'rake', '~> 12.3'
+  spec.add_development_dependency 'rspec', '~> 3.6'
   # TODO: investigate why rubocop's jaro-winkler dependency fails to install in our alpine linux image
   spec.add_development_dependency 'rubocop', '0.56.0'
 end
