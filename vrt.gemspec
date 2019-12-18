@@ -16,9 +16,10 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['lib/**/*.{rb,json}']
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 2.1'
+  spec.add_development_dependency 'bundler', '~> 1.14'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rubocop'
+  # TODO: investigate why rubocop's jaro-winkler dependency fails to install in our alpine linux image
+  spec.add_development_dependency 'rubocop', '0.56.0'
 end
