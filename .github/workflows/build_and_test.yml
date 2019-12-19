@@ -7,14 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [ '2.5', '2.6.5', '2.x']
-    name: Test gem in ruby version ${{ matrix.ruby }}
+        ruby: [ '2.5', '2.6.5']
+    name: Test gem in ruby v${{ matrix.ruby }}
+    container:
+      image: ruby:${{ matrix.ruby }}-alpine
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby ${{ matrix.ruby }}
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
+    - name: Install make and gcc
+      run: |
+        apk add --update make
+        apk add build-base
     - name: Build with dependencies
       run: |
         gem install bundler -v 2.1
