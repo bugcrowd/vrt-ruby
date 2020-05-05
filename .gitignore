@@ -8,3 +8,6 @@
 # Gemfile.lock should not be under version control
 # https://yehudakatz.com/2010/12/16/clarifying-the-roles-of-the-gemspec-and-gemfile/
 Gemfile.lock
+
+# ignore version manager files
+.tool-versions
