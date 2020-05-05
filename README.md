@@ -6,7 +6,7 @@
     <img src="https://badge.fury.io/rb/vrt.svg" />
   </a>
   <a href="https://github.com/bugcrowd/vrt-ruby/actions">
-    <img src="https://github.com/bugcrowd/vrt-ruby/workflows/build/badge.svg" />
+    <img src="https://github.com/bugcrowd/vrt-ruby/workflows/Build/badge.svg" />
   </a>
   <a href="https://www.rubydoc.info/gems/vrt/">
     <img src="https://img.shields.io/badge/doc-rubydoc-informational" />
