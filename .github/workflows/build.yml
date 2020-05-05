@@ -1,4 +1,4 @@
-name: Build and test
+name: Build
 
 on: [push]
 
@@ -17,7 +17,7 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - name: Build with dependencies
       run: |
-        gem install bundler -v 1.17
+        gem install bundler -v 2.1
         bundle install
     - name: Test with rspec
       run: |

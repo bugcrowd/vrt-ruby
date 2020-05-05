@@ -2,9 +2,15 @@
   <img src="https://user-images.githubusercontent.com/1854876/28642569-b44a823a-7207-11e7-8f26-af023adc5d22.png" />
 </p>
 <p align="center">
-  <a href="https://rubygems.org/gems/vrt"><img src="https://badge.fury.io/rb/vrt.svg" /></a>
-  <img src="https://badge.buildkite.com/d9023f789854d9a40404670f02871ffe89f8ac214524e1cbdf.svg?branch=master" />
-  <a href="https://www.rubydoc.info/gems/vrt/"><img src="https://img.shields.io/badge/doc-rubydoc-informational" /></a>
+  <a href="https://rubygems.org/gems/vrt">
+    <img src="https://badge.fury.io/rb/vrt.svg" />
+  </a>
+  <a href="https://github.com/bugcrowd/vrt-ruby/actions">
+    <img src="https://github.com/bugcrowd/vrt-ruby/workflows/Build/badge.svg" />
+  </a>
+  <a href="https://www.rubydoc.info/gems/vrt/">
+    <img src="https://img.shields.io/badge/doc-rubydoc-informational" />
+  </a>
 </p>
 
 # VRT Ruby Wrapper
