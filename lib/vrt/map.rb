@@ -45,7 +45,7 @@ module VRT
       # Current: At least one string of lowercase letters or _, plus up to 2 more with stops (no digits)
       # and Old: At least one string of lowercase letters, numbers, or _,
       #          plus up to 2 more with stops and no leading numbers
-      @_valid_identifiers[vrt_id] ||= vrt_id =~ /other|\A[a-z][a-z_\d]*(\.[a-z][a-z_\d]*){0,2}\z/
+      @_valid_identifiers[vrt_id] ||= vrt_id =~ IDENTIFIER_REGEXP
     end
 
     def construct_lineage(string, max_depth)

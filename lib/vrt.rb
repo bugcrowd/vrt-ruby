@@ -19,6 +19,8 @@ module VRT
                    'priority' => nil,
                    'type' => 'category' }.freeze
   MAPPINGS = %i[cvss_v3 remediation_advice cwe].freeze
+  VERSION_REGEXP = /^[0-9]+\.[0-9]/
+  IDENTIFIER_REGEXP = /other|\A[a-z][a-z_\d]*(\.[a-z][a-z_\d]*){0,2}\z/
 
   @version_json = {}
   @last_update = {}
@@ -106,7 +108,7 @@ module VRT
     DIR.entries
        .map(&:basename)
        .map(&:to_s)
-       .select { |dirname| dirname =~ /^[0-9]+\.[0-9]/ }.sort
+       .select { |dirname| dirname =~ VERSION_REGEXP }.sort
   end
 
   # Get the Pathname for a particular version
