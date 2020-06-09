@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: ['2.4', '2.5', '2.6.x', '2.x']
-    name: Test gem in ruby version ${{ matrix.ruby }}
+        ruby: ['2.4', '2.5', '2.6', '2.7.x', '2.x']
+    name: Test ruby v${{ matrix.ruby }} support
     steps:
     - uses: actions/checkout@v1
     - name: Set up Ruby ${{ matrix.ruby }}
