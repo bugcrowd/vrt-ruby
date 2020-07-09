@@ -23,4 +23,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.6'
   # TODO: investigate why rubocop's jaro-winkler dependency fails to install in our alpine linux image
   spec.add_development_dependency 'rubocop', '0.56.0'
+  spec.metadata = {
+    'homepage_uri' => 'https://github.com/bugcrowd/vrt-ruby',
+    'changelog_uri' => 'https://github.com/bugcrowd/vrt-ruby/blob/master/CHANGELOG.md',
+    'source_code_uri' => 'https://github.com/bugcrowd/vrt-ruby',
+    'bug_tracker_uri' => 'https://github.com/bugcrowd/vrt-ruby/issues'
+  }
 end
