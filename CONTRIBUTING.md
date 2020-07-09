@@ -19,10 +19,11 @@ When a new version of the VRT is released, we follow these steps:
 ### Releasing new versions of the gem
 1. Merge all PRs targeted for inclusion in the release (without touching `version.rb`)
 2. Bump the version in `version.rb`
-3. Commit the version bump `git commit -m [tag name]` (where `tag name` is something like `v0.8.0`)
-4. Tag the commit `git tag [tag name]` (where `tag name` is something like `v0.8.0`)
-5. Push the tag and the commit `git push origin master --tag` 
-6. Run `rake release`
+3. Update CHANGELOG with new version
+4. Commit the version bump `git commit -m [tag name]` (where `tag name` is something like `v0.8.0`)
+5. Tag the commit `git tag [tag name]` (where `tag name` is something like `v0.8.0`)
+6. Push the tag and the commit `git push origin master --tag` 
+7. Run `rake release`
 
 
 If you need access to push the gem, create an account on rubygems (if you don't have one already) and then ask one of the existing owners to run `gem owner vrt --add <your-rubygems-email>`
