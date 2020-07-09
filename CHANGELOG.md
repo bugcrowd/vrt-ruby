@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Removed
+
+## [v0.10.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.9.0...v0.10.0) - 2020-07-09
+### Added
 - Support for VRT 1.9
 
 ### Changed
