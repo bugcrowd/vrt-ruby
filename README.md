@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/1854876/28642569-b44a823a-7207-11e7-8f26-af023adc5d22.png" />
+  <img src="https://gist.githubusercontent.com/adamrdavid/c5d4e0faab7801c828962487f3e5b924/raw/2ab968922aa658e37b458fd07c67591ca98b77a9/vrt.svg" />
 </p>
 <p align="center">
   <a href="https://rubygems.org/gems/vrt">
