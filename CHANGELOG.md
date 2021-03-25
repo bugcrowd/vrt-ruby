@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 ### Added
+- Support for VRT 1.10
 
 ### Changed
 
