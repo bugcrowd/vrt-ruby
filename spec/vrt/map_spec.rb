@@ -68,9 +68,25 @@ describe VRT::Map do
           )
         end
 
+        context 'and not stringfied' do
+          it 'returns an array of categories with correct max depth' do
+            expect(sample_map.get_lineage(id, max_depth: 'subcategory', stringify: false)).to eq(
+              [ 'Server Security Misconfiguration (1.1)', 'Using Default Credentials']
+            )
+          end
+        end
+
         it 'returns a formatted lineage string with the correct max depth' do
           expect(sample_map.get_lineage(id, max_depth: 'category')).to eq(
             'Server Security Misconfiguration (1.1)'
+          )
+        end
+      end
+
+      context 'when requested not stringfied' do
+        it 'returns an array of categories' do
+          expect(sample_map.get_lineage(id, stringify: false)).to eq(
+            [ 'Server Security Misconfiguration (1.1)', 'Using Default Credentials', 'Production Server' ]
           )
         end
       end
@@ -81,6 +97,14 @@ describe VRT::Map do
 
       it 'returns a formatted lineage string' do
         expect(sample_map.get_lineage(id)).to eq 'Insecure Direct Object References (IDOR)'
+      end
+
+      context 'when requested not stringfied' do
+        it 'returns an array of with a single category' do
+          expect(sample_map.get_lineage(id, stringify: false )).to eq(
+            ['Insecure Direct Object References (IDOR)']
+          )
+        end
       end
     end
   end

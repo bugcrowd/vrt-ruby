@@ -25,8 +25,9 @@ module VRT
       @_valid_vrt_ids[vrt_id] ||= valid_identifier?(vrt_id) && !find_node(vrt_id).nil?
     end
 
-    def get_lineage(string, max_depth: 'variant')
-      @_lineages[string + max_depth] ||= construct_lineage(string, max_depth)
+    def get_lineage(string, max_depth: 'variant', stringify: true)
+      @_lineages[string + max_depth + (stringify ? 'stringfied' : '')] ||=
+        stringify ? construct_lineage(string, max_depth).join(' > ') : construct_lineage(string, max_depth)
     end
 
     # Returns list of top level categories in the shape:
@@ -51,12 +52,11 @@ module VRT
     def construct_lineage(string, max_depth)
       return unless valid_identifier?(string)
 
-      lineage = ''
+      lineage = []
       walk_node_tree(string, max_depth: max_depth) do |ids, node, level|
         return unless node
 
-        lineage += node.name
-        lineage += ' > ' unless level == ids.length
+        lineage << node.name
       end
       lineage
     end
