@@ -142,4 +142,16 @@ module VRT
     @maps = {}
     @mappings = nil
   end
+
+  def self.configure
+    @configuration = VRT::Configuration.new
+
+    yield configuration if block_given?
+
+    configuration
+  end
+
+  def self.configuration
+    @configuration || configure
+  end
 end
