@@ -53,7 +53,7 @@ module VRT
       return unless valid_identifier?(string)
 
       lineage = []
-      walk_node_tree(string, max_depth: max_depth) do |ids, node, level|
+      walk_node_tree(string, max_depth: max_depth) do |_ids, node, _level|
         return unless node
 
         lineage << node.name

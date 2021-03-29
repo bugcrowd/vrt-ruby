@@ -71,7 +71,7 @@ describe VRT::Map do
         context 'and not stringfied' do
           it 'returns an array of categories with correct max depth' do
             expect(sample_map.get_lineage(id, max_depth: 'subcategory', stringify: false)).to eq(
-              [ 'Server Security Misconfiguration (1.1)', 'Using Default Credentials']
+              ['Server Security Misconfiguration (1.1)', 'Using Default Credentials']
             )
           end
         end
@@ -86,7 +86,7 @@ describe VRT::Map do
       context 'when requested not stringfied' do
         it 'returns an array of categories' do
           expect(sample_map.get_lineage(id, stringify: false)).to eq(
-            [ 'Server Security Misconfiguration (1.1)', 'Using Default Credentials', 'Production Server' ]
+            ['Server Security Misconfiguration (1.1)', 'Using Default Credentials', 'Production Server']
           )
         end
       end
@@ -101,7 +101,7 @@ describe VRT::Map do
 
       context 'when requested not stringfied' do
         it 'returns an array of with a single category' do
-          expect(sample_map.get_lineage(id, stringify: false )).to eq(
+          expect(sample_map.get_lineage(id, stringify: false)).to eq(
             ['Insecure Direct Object References (IDOR)']
           )
         end
