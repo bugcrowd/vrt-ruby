@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 ### Added
 - Support for VRT 1.10
+- Support for VRT 1.10.1 (updated spelling in scw mapping)
 
 ### Changed
 
