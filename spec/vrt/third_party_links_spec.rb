@@ -3,12 +3,12 @@ require 'spec_helper'
 describe VRT::ThirdPartyLinks do
   let(:vrt) { VRT }
 
-  describe 'mapping files' do
+  describe '#get' do
     subject(:get_mapping) { described_class.new(scheme, directory: directory).get(id_list, version) }
 
     let(:id_list) { %i[server_security_misconfiguration directory_listing_enabled sensitive_data_exposure] }
     let(:directory) { nil }
-    let(:scheme) { :scw }
+    let(:scheme) { 'secure-code-warrior-links' }
     let(:version) { '999.999' }
 
     context 'when mapping is nested under a subdirectory' do
