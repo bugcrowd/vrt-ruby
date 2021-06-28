@@ -58,9 +58,11 @@ module VRT
     end
 
     def mapping_file_path(version)
+      # Supports legacy flat file structure `mappings/cvss.json`
       filename = VRT::DIR.join(version, self.class::PARENT_DIR, "#{@scheme}.json")
       return filename if File.file?(filename)
 
+      # Supports mappings that are nested under their scheme name e.g. `mappings/cvss/cvss.json`
       VRT::DIR.join(version, @parent_directory, "#{@scheme}.json")
     end
 
