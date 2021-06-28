@@ -246,4 +246,16 @@ describe VRT do
       it { is_expected.to be false }
     end
   end
+
+  describe '#mappings' do
+    subject(:mappings) { described_class.mappings }
+
+    it { is_expected.to include(*VRT::MAPPINGS) }
+  end
+
+  describe '#third_party_links' do
+    subject(:third_party_links) { described_class.third_party_links }
+
+    it { is_expected.to include(:scw) }
+  end
 end
