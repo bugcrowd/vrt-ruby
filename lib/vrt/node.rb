@@ -27,6 +27,10 @@ module VRT
       Hash[VRT.mappings.map { |name, map| [name, map.get(id_list, @version)] }]
     end
 
+    def third_party_links
+      Hash[VRT.third_party_links.map { |name, map| [name, map.get(id_list, @version)] }]
+    end
+
     def id_list
       parent ? parent.id_list << id : [id]
     end

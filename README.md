@@ -77,14 +77,15 @@ node.id
 
 node.name
 
-node.mappings
+node.mappings # The node's mappings to other classifications
 ```
 
-### If you need to deal with mappings between versions
+### If you need to deal with translating between versions
 VRT module also has a `find_node` method that is version agnostic.  This is used to find the best
 match for a node under any version and has options to specify a preferred version.
 
 #### Examples:
+
 ```ruby
 # Find a node in a given preferred version that best maps to the given id
 VRT.find_node(
@@ -102,4 +103,38 @@ VRT.find_node(
 # Query for vulnerabilities by category while maintaining deprecated mappings by adding
 # deprecated ids to the search with `all_matching_categories`
 categories_to_search_for += VRT.all_matching_categories(categories_to_search_for)
+```
+
+### Mappings and external links
+
+#### Mappings
+
+A mapping is a relationship defined from a node to another classification like cvss or cwe or to
+more information like remediation advice. The relationships that are defined in mappings are
+maintained by the Bugcrowd team as well as external contributors to the
+[VRT repo](https://github.com/bugcrowd/vulnerability-rating-taxonomy/tree/master/mappings).
+
+##### Example getting the CWE for a particular VRT ID
+
+```ruby
+VRT.find_node(
+  vrt_id: 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing'
+).mappings[:cwe]
+
+=> ["CWE-942", "CWE-16"]
+```
+
+#### Third party links
+
+These are simillar to mappings, but the relationships are maintained by an external party instead of
+Bugcrowd.
+
+##### Example getting Secure Code Warrior training link for a particular VRT ID
+
+```ruby
+VRT.find_node(
+  vrt_id: 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing'
+).third_party_links[:scw]
+
+=> "https://integration-api.securecodewarrior.com/api/v1/trial?id=bugcrowd&mappingList=vrt&mappingKey=server_security_misconfiguration:unsafe_cross_origin_resource_sharing&redirect=true"
 ```

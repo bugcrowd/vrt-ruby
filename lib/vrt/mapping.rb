@@ -1,7 +1,12 @@
+# frozen_string_literal: true
+
 module VRT
   class Mapping
-    def initialize(scheme)
+    PARENT_DIR = 'mappings'
+
+    def initialize(scheme, subdirectory = nil)
       @scheme = scheme.to_s
+      @parent_directory = File.join(self.class::PARENT_DIR, (subdirectory || @scheme))
       load_mappings
     end
 
@@ -14,9 +19,9 @@ module VRT
         id_list = VRT.find_node(vrt_id: id_list.join('.'), preferred_version: @min_version).id_list
         version = @min_version
       end
-      mapping = @mappings[version]['content']
-      default = @mappings[version]['metadata']['default']
-      keys = @mappings[version]['metadata']['keys']
+      mapping = @mappings.dig(version, 'content') || @mappings[version]
+      default = @mappings.dig(version, 'metadata', 'default')
+      keys = @mappings.dig(version, 'metadata', 'keys')
       if keys
         # Convert mappings with multiple keys to be nested under a single
         # top-level key. Remediation advice has keys 'remediation_advice'
@@ -53,11 +58,12 @@ module VRT
     end
 
     def mapping_file_path(version)
-      filename = VRT::DIR.join(version, 'mappings', "#{@scheme}.json")
+      # Supports legacy flat file structure `mappings/cvss.json`
+      filename = VRT::DIR.join(version, self.class::PARENT_DIR, "#{@scheme}.json")
       return filename if File.file?(filename)
 
       # Supports mappings that are nested under their scheme name e.g. `mappings/cvss/cvss.json`
-      VRT::DIR.join(version, 'mappings', @scheme, "#{@scheme}.json")
+      VRT::DIR.join(version, @parent_directory, "#{@scheme}.json")
     end
 
     # Converts arrays to hashes keyed by the id attribute (as a symbol) for easier lookup. So

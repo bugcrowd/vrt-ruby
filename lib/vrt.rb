@@ -7,6 +7,7 @@ require 'vrt/node'
 require 'vrt/mapping'
 require 'vrt/cross_version_mapping'
 require 'vrt/errors'
+require 'vrt/third_party_links'
 
 require 'date'
 require 'json'
@@ -123,6 +124,12 @@ module VRT
     @mappings ||= Hash[MAPPINGS.map { |name| [name, VRT::Mapping.new(name)] }]
   end
 
+  def third_party_links
+    @third_party_links ||= {
+      scw: VRT::ThirdPartyLinks.new('secure-code-warrior-links', 'remediation_training')
+    }
+  end
+
   # Cache the VRT contents in-memory, so we're not hitting File I/O multiple times per
   # request that needs it.
   def reload!
@@ -131,6 +138,7 @@ module VRT
     get_json
     get_map
     last_updated
+    third_party_links
     mappings
   end
 

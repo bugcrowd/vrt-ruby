@@ -86,6 +86,19 @@ describe VRT::Node do
     end
   end
 
+  describe '#third_party_links' do
+    subject(:third_party_links) { VRT::Map.new(version).find_node(id).third_party_links }
+
+    let(:version) { '2.0' }
+    let(:id) { 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing' }
+
+    it { is_expected.to include(:scw) }
+
+    it 'loads correct mapping' do
+      expect(third_party_links[:scw]).to eq 'https://integration-api.securecodewarrior.com/api/v1/trial?id=bugcrowd&mappingList=vrt&mappingKey=server_security_misconfiguration:unsafe_cross_origin_resource_sharing&redirect=true'
+    end
+  end
+
   describe '#as_json' do
     subject(:node_hash) { VRT::Map.new(version).find_node(id).as_json }
 
