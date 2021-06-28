@@ -126,7 +126,7 @@ module VRT
 
   def third_party_links
     @third_party_links ||= {
-      scw: VRT::ThirdPartyLinks.new('secure-code-warrior-links', directory: 'remediation_training')
+      scw: VRT::ThirdPartyLinks.new('secure-code-warrior-links', 'remediation_training')
     }
   end
 

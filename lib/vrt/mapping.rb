@@ -4,8 +4,9 @@ module VRT
   class Mapping
     PARENT_DIR = 'mappings'
 
-    def initialize(scheme)
+    def initialize(scheme, subdirectory = nil)
       @scheme = scheme.to_s
+      @parent_directory = File.join(self.class::PARENT_DIR, (subdirectory || @scheme))
       load_mappings
     end
 
@@ -56,12 +57,11 @@ module VRT
       raise VRT::Errors::MappingNotFound if @mappings.empty?
     end
 
-    def mapping_file_path(version, parent_dir: PARENT_DIR)
-      filename = VRT::DIR.join(version, parent_dir, "#{@scheme}.json")
+    def mapping_file_path(version)
+      filename = VRT::DIR.join(version, self.class::PARENT_DIR, "#{@scheme}.json")
       return filename if File.file?(filename)
 
-      # Supports mappings that are nested under their scheme name e.g. `mappings/cvss/cvss.json`
-      VRT::DIR.join(version, parent_dir, @scheme, "#{@scheme}.json")
+      VRT::DIR.join(version, @parent_directory, "#{@scheme}.json")
     end
 
     # Converts arrays to hashes keyed by the id attribute (as a symbol) for easier lookup. So

@@ -4,7 +4,7 @@ describe VRT::ThirdPartyLinks do
   let(:vrt) { VRT }
 
   describe '#get' do
-    subject(:get_mapping) { described_class.new(scheme, directory: directory).get(id_list, version) }
+    subject(:get_mapping) { described_class.new(scheme, directory).get(id_list, version) }
 
     let(:id_list) { %i[server_security_misconfiguration directory_listing_enabled sensitive_data_exposure] }
     let(:directory) { nil }
