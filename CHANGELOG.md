@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 ### Added
+- Find the [Secure Code Warrior](https://www.securecodewarrior.com/) remediation training associated with a VRT node
 
 ### Changed
 
