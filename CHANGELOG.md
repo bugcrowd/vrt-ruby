@@ -79,6 +79,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [v0.6.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.5.1...v0.6.0) - 2018-09-27
 ### Changed
 - Fixed bug for mappings with multiple keys and a default (resolves: [#26](https://github.com/bugcrowd/vrt-ruby/issues/26))
+- `VRT::Map#find_node` returns `nil` when passed an invalid vrt_id (resolves: [#32](https://github.com/bugcrowd/vrt-ruby/issues/32))
 
 ### Removed
 - Removed `Gemfile.lock` from source control

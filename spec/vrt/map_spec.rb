@@ -51,6 +51,50 @@ describe VRT::Map do
     end
   end
 
+  describe '#find_node' do
+    subject { sample_map.find_node(vrt_id) }
+
+    context 'when vrt_id is nil' do
+      let(:vrt_id) { nil }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when vrt_id is not a valid identifier' do
+      let(:vrt_id) { "I'm not valid" }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when vrt_id is not a string' do
+      let(:vrt_id) { 55 }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when vrt_id is a valid identifier' do
+      context 'vrt_id does not exist in version' do
+        let(:vrt_id) { 'cool_new_concept' }
+
+        it { is_expected.to be_nil }
+      end
+
+      context 'vrt_id exists in version' do
+        context 'vrt_id is category level' do
+          let(:vrt_id) { 'server_security_misconfiguration' }
+
+          it { is_expected.to be_a(VRT::Node) }
+        end
+
+        context 'vrt_id is a variant' do
+          let(:vrt_id) { 'server_security_misconfiguration.using_default_credentials.production_server' }
+
+          it { is_expected.to be_a(VRT::Node) }
+        end
+      end
+    end
+  end
+
   describe '#get_lineage' do
     context 'with a complex hierarchy' do
       let(:id) { 'server_security_misconfiguration.using_default_credentials.production_server' }
