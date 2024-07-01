@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.files         = Dir['lib/**/*.{rb,json}']
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 3.3.2'
+  spec.required_ruby_version = '>= 3.1'
 
   spec.add_development_dependency 'bundler', '~> 2.5.11'
   spec.add_development_dependency 'pry', '~> 0.14.2'
