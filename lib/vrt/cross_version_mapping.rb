@@ -32,14 +32,14 @@ module VRT
     def find_deprecated_node(vrt_id, new_version = nil, max_depth = 'variant')
       version = latest_version_for_deprecated_node(vrt_id)
       node_id = deprecated_node_json[vrt_id][new_version] || deprecated_node_json[vrt_id][version]
-      new_node = VRT::Map.new(new_version).find_node(node_id, max_depth: max_depth)
+      new_node = VRT::Map.new(new_version).find_node(node_id, max_depth:)
       new_node.nil? ? find_deprecated_node(node_id, new_version, max_depth) : new_node
     end
 
     def find_valid_parent_node(vrt_id, new_version, max_depth)
       new_map = VRT::Map.new(new_version)
       if new_map.valid?(vrt_id)
-        new_map.find_node(vrt_id, max_depth: max_depth)
+        new_map.find_node(vrt_id, max_depth:)
       else
         parent = vrt_id.split('.')[0..-2].join('.')
         return nil if parent.empty?
