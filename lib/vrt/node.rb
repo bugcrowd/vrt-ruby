@@ -24,11 +24,11 @@ module VRT
     end
 
     def mappings
-      Hash[VRT.mappings.map { |name, map| [name, map.get(id_list, @version)] }]
+      VRT.mappings.transform_values { |map| map.get(id_list, @version) }
     end
 
     def third_party_links
-      Hash[VRT.third_party_links.map { |name, map| [name, map.get(id_list, @version)] }]
+      VRT.third_party_links.transform_values { |map| map.get(id_list, @version) }
     end
 
     def id_list

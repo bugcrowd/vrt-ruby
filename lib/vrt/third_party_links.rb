@@ -27,7 +27,7 @@ module VRT
 
     # For flat third party links ther is no hierarchical step up
     def get_key(id_list:, mapping:, key: nil) # rubocop:disable Lint/UnusedMethodArgument
-      mapping.dig(id_list.join('.'))
+      mapping[id_list.join('.')]
     end
   end
 end

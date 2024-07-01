@@ -69,9 +69,9 @@ describe VRT do
   describe '#find_node' do
     subject(:found_node) do
       described_class.find_node(
-        vrt_id: vrt_id,
+        vrt_id:,
         preferred_version: new_version,
-        max_depth: max_depth
+        max_depth:
       )
     end
 
