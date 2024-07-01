@@ -13,6 +13,8 @@ module VRT
     # returns the most specific value provided in the mapping file for the given vrt id
     #
     # if no mapping file exists for the given version, the mapping file for the earliest version available will be used
+    # rubocop:disable Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/PerceivedComplexity
     def get(id_list, version)
       # update the vrt id to the first version we have a mapping file for
       unless @mappings.key?(version)
@@ -29,15 +31,17 @@ module VRT
         # { remediation_advice: { remediation_advice: '...', references: [...] } }
         keys.each_with_object({}) do |key, acc|
           acc[key.to_sym] = get_key(
-            id_list: id_list,
-            mapping: mapping,
-            key: key
+            id_list:,
+            mapping:,
+            key:
           ) || default&.dig(key)
         end
       else
-        get_key(id_list: id_list, mapping: mapping, key: @scheme) || default
+        get_key(id_list:, mapping:, key: @scheme) || default
       end
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
 
     private
 
@@ -74,7 +78,7 @@ module VRT
       if mapping.is_a?(Array) && mapping.first.is_a?(Hash) && mapping.first.key?('id')
         mapping.each_with_object({}) { |entry, acc| acc[entry['id'].to_sym] = key_by_id(entry) }
       elsif mapping.is_a?(Hash)
-        mapping.each_with_object({}) { |(key, value), acc| acc[key] = key_by_id(value) }
+        mapping.transform_values { |value| key_by_id(value) }
       else
         mapping
       end
