@@ -7,7 +7,8 @@ Gem::Specification.new do |spec|
   spec.name          = 'vrt'
   spec.version       = Vrt::VERSION
   spec.platform      = Gem::Platform::RUBY
-  spec.authors       = ['Barnett Klane', 'Max Schwenk', 'Adam David', 'Abhinav Nain']
+  spec.authors       = ['Barnett Klane', 'Max Schwenk', 'Adam David',
+                        'Abhinav Nain']
   spec.email         = ['barnett@bugcrowd.com', 'max.schwenk@bugcrowd.com', 'adam.david@bugcrowd.com',
                         'abhinav.nain@bugcrowd.com']
   spec.date          = Date.today.to_s
