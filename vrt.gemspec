@@ -9,7 +9,8 @@ Gem::Specification.new do |spec|
   spec.platform      = Gem::Platform::RUBY
   spec.authors       = ['Barnett Klane', 'Max Schwenk', 'Adam David',
                         'Abhinav Nain']
-  spec.email         = ['barnett@bugcrowd.com', 'max.schwenk@bugcrowd.com', 'adam.david@bugcrowd.com',
+  spec.email         = ['barnett@bugcrowd.com', 'max.schwenk@bugcrowd.com',
+                        'adam.david@bugcrowd.com',
                         'abhinav.nain@bugcrowd.com']
   spec.date          = Date.today.to_s
   spec.summary       = "Ruby wrapper for Bugcrowd\'s Vulnerability Rating Taxonomy"
