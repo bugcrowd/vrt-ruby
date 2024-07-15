@@ -81,7 +81,7 @@ module VRT
   def find_node(vrt_id:, preferred_version: nil, max_depth: 'variant', version: nil) # rubocop:disable Lint/UnusedMethodArgument
     new_version = preferred_version || current_version
     if get_map(version: new_version).valid?(vrt_id)
-      get_map(version: new_version).find_node(vrt_id, max_depth: max_depth)
+      get_map(version: new_version).find_node(vrt_id, max_depth:)
     elsif deprecated_node?(vrt_id)
       find_deprecated_node(vrt_id, preferred_version, max_depth)
     else
