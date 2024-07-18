@@ -11,6 +11,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Removed
 
+## [v0.13.1](https://github.com/bugcrowd/vrt-ruby/compare/v0.13.0...v0.13.1) - 2024-07-18
+
+### Changed
+- Minor Bugfixes
+
 ## [v0.13.0](https://github.com/bugcrowd/vrt-ruby/compare/v0.12.7...v0.13.0) - 2024-07-18
 
 ### Added
