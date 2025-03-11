@@ -61,3 +61,6 @@
 [submodule "lib/data/1.15"]
 	path = lib/data/1.15
 	url = git@github.com:bugcrowd/vulnerability-rating-taxonomy.git
+[submodule "lib/data/1.15.1"]
+	path = lib/data/1.15.1
+	url = git@github.com:bugcrowd/vulnerability-rating-taxonomy.git
