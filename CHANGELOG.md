@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Added
 
 - Find the [Secure Code Warrior](https://www.securecodewarrior.com/) remediation training associated with a VRT node
+- CVSS v4 mapping support: `cvss_v4` in `VRT::MAPPINGS` and `node.mappings[:cvss_v4]` when mapping data is present
+- Specs for cvss_v4 mappings (mapping file loading, `#get` for leaf/internal/root nodes, default, and node `#mappings`)
 
 ### Changed
 

@@ -15,6 +15,12 @@ describe VRT::Mapping do
       it { is_expected.not_to be nil }
     end
 
+    context 'when cvss_v4 mapping is nested under a subdirectory' do
+      let(:scheme) { :cvss_v4 }
+
+      it { is_expected.not_to be nil }
+    end
+
     context 'when mapping is in flat directory' do
       let(:scheme) { :cwe }
 
@@ -192,6 +198,68 @@ describe VRT::Mapping do
               end
             end
           end
+        end
+      end
+    end
+  end
+
+  describe 'cvss_v4_mapping' do
+    let(:cvss_v4) { described_class.new(:cvss_v4) }
+
+    describe '#get' do
+      subject { cvss_v4.get(id_list, version) }
+
+      context 'when cvss_v4 on leaf node' do
+        let(:id_list) { %i[unvalidated_redirects_and_forwards open_redirect get_based] }
+        let(:version) { '999.999' }
+
+        it 'returns the full CVSS v4 vector string' do
+          is_expected.to eq('CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N')
+        end
+      end
+
+      context 'when cvss_v4 on internal node' do
+        let(:id_list) { %i[server_security_misconfiguration unsafe_cross_origin_resource_sharing] }
+        let(:version) { '999.999' }
+
+        it 'returns the most specific cvss_v4 value' do
+          is_expected.to eq('CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N')
+        end
+      end
+
+      context 'when cvss_v4 on root node with children' do
+        let(:id_list) { %i[server_security_misconfiguration] }
+        let(:version) { '999.999' }
+
+        it 'returns the category-level cvss_v4 value' do
+          is_expected.to eq('CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N')
+        end
+      end
+
+      context 'when cvss_v4 on root node without children' do
+        let(:id_list) { %i[insecure_data_storage] }
+        let(:version) { '999.999' }
+
+        it 'returns the node cvss_v4 value' do
+          is_expected.to eq('CVSS:4.0/AV:P/AC:H/AT:N/PR:H/UI:P/VC:N/VI:N/VA:N/SC:N/SI:N/SA:N')
+        end
+      end
+
+      context 'when other' do
+        let(:id_list) { %i[other] }
+        let(:version) { '999.999' }
+
+        it 'returns the default from metadata' do
+          is_expected.to eq('CVSS:4.0/AV:P/AC:H/AT:N/PR:H/UI:P/VC:N/VI:N/VA:N/SC:N/SI:N/SA:N')
+        end
+      end
+
+      context 'when using version 2.0 flat mapping' do
+        let(:id_list) { %i[unvalidated_redirects_and_forwards open_redirect get_based] }
+        let(:version) { '2.0' }
+
+        it 'returns the cvss_v4 value for the leaf node' do
+          is_expected.to eq('CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N')
         end
       end
     end
