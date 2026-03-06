@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Removed
 
-## [v0.13.7](https://github.com/bugcrowd/vrt-ruby/compare/v0.13.6...v0.13.7) - 2026-03-05
+## [v0.13.7](https://github.com/bugcrowd/vrt-ruby/compare/v0.13.6...v0.13.7) - 2026-03-09
 
 ### Added
 
