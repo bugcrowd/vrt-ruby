@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Removed
 
+## [v0.13.7](https://github.com/bugcrowd/vrt-ruby/compare/v0.13.6...v0.13.7) - 2026-03-09
+
+### Added
+
+- CVSS v4 mapping support: `cvss_v4` in `VRT::MAPPINGS` and `node.mappings[:cvss_v4]` when mapping data is present
+- Specs for cvss_v4 mappings (mapping file loading, `#get` for leaf/internal/root nodes, default, and node `#mappings`)
+
 ## [v0.13.6](https://github.com/bugcrowd/vrt-ruby/compare/v0.13.5...v0.13.6) - 2025-08-19
 
 ### Added

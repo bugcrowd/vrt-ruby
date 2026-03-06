@@ -55,6 +55,14 @@ describe VRT::Node do
       end
     end
 
+    context 'cvss_v4' do
+      it 'has the expected cvss_v4 full vector string' do
+        expect(mappings).to include(
+          cvss_v4: 'CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N'
+        )
+      end
+    end
+
     context 'remediation_advice' do
       let(:id) { 'server_security_misconfiguration.unsafe_cross_origin_resource_sharing' }
 
